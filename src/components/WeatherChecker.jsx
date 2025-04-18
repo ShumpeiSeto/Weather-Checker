@@ -1,88 +1,40 @@
-// import { useState, useEffect } from "react";
-// import "./WeatherChecker.css";
-// const fetchWeatherData = async () => {
-//   // お天気API取得のための変数
-//   const API_KEY = "c80c3b32e313fbc3c6f358e4c6717881";
-//   // const city = "Tokyo";
-//   const here = {
-//     lat: 35.472734,
-//     lon: 139.6296175,
-//   };
-//   const url = `https://api.openweathermap.org/data/2.5/weather?lat=${here.lat}&lon=${here.lon}&appid=${API_KEY}`;
-//   // const url = `https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&exludes={current,minituely,hourly,alerts}&appid=${API_key}`;
-//   const response = await fetch(url);
-//   if (!response.ok) {
-//     const error = await response.text();
-//     throw new Error(
-//       `HTTP error! status: ${response.status}, message: ${error}`
-//     );
-//   } else {
-//     // body部分をJSON形式と考えて、オブジェクト形式変える
-//     return await response.json();
-//   }
-// };
-// export default function WeatherChecker() {
-//   const [isLoading, setLoading] = useState(true);
-//   const [error, setError] = useState(null);
-//   const [weatherData, setWeatherData] = useState(null);
-//   const [viewFlg, setViewFlg] = useState(false);
-//   // Kelvinから気温に変換する
-//   function convertToTemp(kelvin) {
-//     return +(kelvin - 273.15).toFixed(2);
-//   }
-//   function handleClick() {
-//     setViewFlg(true);
-//   }
-//   function resetClick() {
-//     setViewFlg(false);
-//   }
-//   useEffect(() => {
-//     fetchWeatherData()
-//       .then((data) => setWeatherData(data))
-//       .catch((err) => setError(err.message))
-//       .finally(() => setLoading(false));
-//   }, []);
-//   console.log(weatherData);
-//   // Loading中の表示
-//   if (isLoading) {
-//     return <div>Loading...</div>;
-//   }
-//   if (error) {
-//     return <div>{`データ取得エラー：${error.message}`}</div>;
-//   }
-//   const place = weatherData.name;
-//   const wResult = weatherData.weather.at(0).main;
-//   const temp = convertToTemp(weatherData.main.temp);
-//   const jikoku = `${new Date().getHours()}:${String(
-//     new Date().getMinutes()
-//   ).padStart(2, "0")}`;
-//   const iconId = weatherData.weather.at(0).icon;
-//   const iconSrc = `https://openweathermap.org/img/wn/${iconId}@2x.png`;
-//   // 初回レンダリングのみ実行する時は空の配列を最後に渡す
-//   return (
-//     <>
-//       <h2>お天気調べましょう！</h2>
-//       {/* <button onClick={handleClick}>押してね</button> */}
-//       <dl className="weather-info">
-//         <button onClick={handleClick}>調べる</button>
-//         <button onClick={resetClick}>リセット</button>
-//         <dt>天気:</dt>
-//         <dd className="weather">{viewFlg ? wResult : "お天気情報"}</dd>
-//         {viewFlg && <img src={iconSrc} alt="お天気アイコンです" />}
-//         <dt>時刻:</dt>
-//         <dd className="jikoku">{viewFlg ? jikoku : "時刻表示場所"}</dd>
-//         <dt>地域:</dt>
-//         <dd className="area">{viewFlg ? place : "調査場所名"}</dd>
-
-//         <dt>気温:</dt>
-//         <dd className="temp">{viewFlg ? temp : "気温情報"}</dd>
-//       </dl>
-//     </>
-//   );
-// }
-
 import { useState, useEffect } from "react";
 import "./WeatherChecker.css";
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend,
+} from "chart.js";
+
+import { Line } from "react-chartjs-2";
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend
+);
+const options = {
+  responsive: true,
+  plugins: {
+    legend: {
+      position: "top",
+    },
+    title: {
+      display: true,
+      text: "Weather Chart",
+    },
+  },
+};
 const fetchWeatherData = async () => {
   // お天気API取得のための変数
   const API_KEY = "c80c3b32e313fbc3c6f358e4c6717881";
@@ -109,6 +61,15 @@ export default function WeatherChecker() {
   const [error, setError] = useState(null);
   const [weatherData, setWeatherData] = useState(null);
   const [viewFlg, setViewFlg] = useState(false);
+  // chart用のデータ変数
+  const dateLabels = [];
+  const pops = [];
+  const weathers = [];
+  const humidities = [];
+  const maxTemps = [];
+  const minTemps = [];
+  const icons = [];
+
   // Kelvinから気温に変換する
   function convertToTemp(kelvin) {
     return +(kelvin - 273.15).toFixed(2);
@@ -146,6 +107,17 @@ export default function WeatherChecker() {
     const humidity = day.humidity;
     const iconId = day.weather.at(0).icon;
     const icon = `https://openweathermap.org/img/wn/${iconId}@2x.png`;
+
+    // chart用のデータを格納する
+    dateLabels.push(date);
+    // weathers.push(weather);
+    pops.push(pop * 100);
+    // icons.push(icon);
+    humidities.push(humidity);
+    maxTemps.push(maxTemp);
+    minTemps.push(minTemp);
+
+    // 表示用のオブジェクトを作っておく
     let reuslt = {
       date,
       maxTemp,
@@ -158,6 +130,36 @@ export default function WeatherChecker() {
     acc.push(reuslt);
     return acc;
   }, []);
+  const data = {
+    labels: dateLabels,
+    datasets: [
+      // {
+      //   label: "天気",
+      //   data: weathers,
+      //   backgroundColor: "rgba(53, 162, 235, 0.5)",
+      // },
+      {
+        label: "降水確率",
+        data: pops,
+        backgroundColor: "rgba(255, 99, 132, 0.5)",
+      },
+      {
+        label: "気温(最高)",
+        data: maxTemps,
+        backgroundColor: "rgba(153, 102, 255, 0.5)",
+      },
+      {
+        label: "気温(最低)",
+        data: minTemps,
+        backgroundColor: "rgba(255, 159, 64, 0.5)",
+      },
+      {
+        label: "湿度",
+        data: humidities,
+        backgroundColor: "rgba(75, 192, 192, 0.5)",
+      },
+    ],
+  };
   return (
     <>
       <h2>お天気調べましょう！</h2>
@@ -188,6 +190,8 @@ export default function WeatherChecker() {
           </div>
         );
       })}
+      <Line height={500} width={700} options={options} data={data} />
+      {console.log(data)}
     </>
   );
 }
