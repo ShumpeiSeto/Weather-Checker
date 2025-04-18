@@ -1,0 +1,65 @@
+.weather-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  background-color: lightpink;
+  border-radius: 8px;
+  max-width: 400px; /* 中央に収めるための幅制限 */
+  margin: 15px auto; /* 中央寄せ */
+}
+
+.weather-info h2 {
+  margin: 0;
+  font-size: 24px;
+  color: #333;
+}
+.weather-info button {
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: #475666;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.weather-info button:hover {
+  background-color: #0056b3;
+}
+.weather-info p {
+  margin: 5px 0;
+  font-size: 16px;
+  color: #555;
+}
+.weather-info img {
+  width: 150px; /* アイコンを大きく */
+  height: 150px;
+  margin-bottom: 20px; /* 下に余白を追加 */
+}
+
+.weather-info .error-message {
+  color: red;
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+.weather-info dl {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* 中央揃え */
+  gap: 10px; /* 各項目の間隔を調整 */
+}
+
+.weather-info dt {
+  font-weight: bold;
+  color: #333;
+  font-size: 18px; /* 見出しを少し大きく */
+}
+
+.weather-info dd {
+  margin: 0;
+  font-size: 16px;
+  color: #555;
+  /* text-align: center; テキストを中央揃え */
+}
