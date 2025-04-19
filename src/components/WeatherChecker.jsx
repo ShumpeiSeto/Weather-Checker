@@ -60,6 +60,12 @@ const options = {
     },
   },
 };
+const convertJapanWeth = (engtemp) => {
+  if (engtemp === "Clear") return "晴れ";
+  else if (engtemp === "Rain") return "雨";
+  else if (engtemp === "Clouds") return "くもり";
+  else return "雪";
+};
 const fetchWeatherData = async () => {
   // お天気API取得のための変数
   const API_KEY = "c80c3b32e313fbc3c6f358e4c6717881";
@@ -205,31 +211,61 @@ export default function WeatherChecker() {
       <h2>お天気調べましょう！</h2>
       <button onClick={handleClick}>調べる</button>
       <button onClick={resetClick}>リセット</button>
-      {weekData.map((day, index) => {
-        return (
-          <div key={index} className="weather-info">
-            <dt>日付:</dt>
-            <dd className="date">{viewFlg ? day.date : "日付表示場所"}</dd>
-            <dt>天気:</dt>
-            <dd className="weather">{viewFlg ? day.weather : "お天気情報"}</dd>
-            {viewFlg && <img src={day.icon} alt="お天気アイコンです" />}
-            <dt>降水確率:</dt>
-            <dd className="pop">
-              {viewFlg ? `${day.pop * 100}%` : "降水確率"}
-            </dd>
-            <dt>気温(最高/最低):</dt>
-            <dd className="temp">
-              {viewFlg ? `${day.maxTemp} ${day.minTemp}` : "気温情報"}
-            </dd>
-            <dt>湿度:</dt>
-            <dd className="humidity">
-              {viewFlg ? `${day.humidity}%` : "湿度"}
-            </dd>
-            {/* <dt>地域:</dt>
+      <div className="weather-infos">
+        {weekData.map((day, index) => {
+          return (
+            <div key={index} className="weather-info">
+              <dt className="date">
+                {index === 0
+                  ? "今日"
+                  : index === 1
+                  ? "明日"
+                  : day.date + "曜日"}
+              </dt>
+              {/* <dt>天気:</dt> */}
+              <dd className="weather">
+                {viewFlg ? (
+                  <span className={day.weather.toLowerCase()}>
+                    {convertJapanWeth(day.weather)}
+                  </span>
+                ) : (
+                  "お天気情報"
+                )}
+              </dd>
+              {viewFlg && <img src={day.icon} alt="お天気アイコンです" />}
+              <dt>降水確率:</dt>
+              <dd className="pop">
+                {viewFlg ? (
+                  <span className="popstr">{(day.pop * 100).toFixed(0)}%</span>
+                ) : (
+                  "降水確率"
+                )}
+              </dd>
+              <dt>最高 / 最低</dt>
+              <dd className="temp">
+                {viewFlg ? (
+                  <>
+                    <span className="maxtemp">{day.maxTemp}</span>
+                    <span className="mintemp">{day.minTemp}</span>
+                  </>
+                ) : (
+                  "気温情報"
+                )}
+              </dd>
+              <dt>湿度:</dt>
+              <dd className="humidity">
+                {viewFlg ? (
+                  <span className="humnum">{day.humidity}%</span>
+                ) : (
+                  "湿度"
+                )}
+              </dd>
+              {/* <dt>地域:</dt>
             <dd className="area">{viewFlg ? day.date : "調査場所名"}</dd> */}
-          </div>
-        );
-      })}
+            </div>
+          );
+        })}
+      </div>
       <div className="weather">
         <Line height={150} width={300} options={options} data={data} />
         <div className="wicons">

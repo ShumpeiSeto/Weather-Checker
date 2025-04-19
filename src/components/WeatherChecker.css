@@ -1,3 +1,9 @@
+.weather-infos {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 1fr 1fr;
+  gap: 10px;
+}
 .weather-info {
   display: flex;
   flex-direction: column;
@@ -5,8 +11,9 @@
   padding: 20px;
   background-color: lightpink;
   border-radius: 8px;
-  max-width: 400px; /* 中央に収めるための幅制限 */
-  margin: 15px auto; /* 中央寄せ */
+  /* 中央に収めるための幅制限 */
+  max-width: 400px;
+  margin: 15px auto;
 }
 
 .weather-info h2 {
@@ -35,7 +42,8 @@
 .weather-info img {
   width: 150px; /* アイコンを大きく */
   height: 150px;
-  margin-bottom: 20px; /* 下に余白を追加 */
+  margin: 0;
+  padding: 0;
 }
 
 .weather-info .error-message {
@@ -54,7 +62,6 @@
 .weather-info dt {
   font-weight: bold;
   color: #333;
-  font-size: 18px; /* 見出しを少し大きく */
 }
 
 .weather-info dd {
@@ -63,11 +70,42 @@
   color: #555;
   /* text-align: center; テキストを中央揃え */
 }
-
-.weather {
-  /* display: flex;
-  flex-direction: column; */
+.maxtemp {
+  color: red;
+  padding-right: 8px;
+  font-size: 1.3rem;
 }
+.date {
+  font-size: 1.6rem;
+}
+.mintemp {
+  color: rgb(93, 93, 233);
+  font-size: 1.3rem;
+}
+.clouds {
+  font-size: 1.5rem;
+  color: lightslategray;
+}
+.rain {
+  font-size: 1.5rem;
+  color: rgb(84, 84, 206);
+}
+.clear {
+  font-size: 1.5rem;
+  color: rgb(226, 87, 87);
+}
+.popstr {
+  color: blue;
+  font-size: 1.4rem;
+}
+.humnum {
+  font-size: 1.2rem;
+  color: green;
+}
+/* .weather { */
+/* display: flex;
+  flex-direction: column; */
+/* } */
 .wicons {
   display: grid;
   grid-template-columns: repeat(8, 12.5%);
