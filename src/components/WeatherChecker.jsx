@@ -11,8 +11,10 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
-
+import ChartDataLabels from "chartjs-plugin-datalabels";
 import { Line } from "react-chartjs-2";
+import { BsBorderWidth } from "react-icons/bs";
+import { MdBorderColor } from "react-icons/md";
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -21,7 +23,8 @@ ChartJS.register(
   BarElement,
   Title,
   Tooltip,
-  Legend
+  Legend,
+  ChartDataLabels
 );
 const options = {
   responsive: true,
@@ -32,6 +35,28 @@ const options = {
     title: {
       display: true,
       text: "Weather Chart",
+    },
+  },
+  scales: {
+    x: {
+      stacked: false,
+    },
+    y: {
+      stacked: false,
+      max: 25,
+      min: 10,
+      ticks: {
+        stepSize: 3,
+      },
+    },
+    y1: {
+      stacked: false,
+      position: "right",
+      max: 100,
+      min: 0,
+      ticks: {
+        color: "rgba(29, 186, 186, 0.5)",
+      },
     },
   },
 };
@@ -112,7 +137,7 @@ export default function WeatherChecker() {
     dateLabels.push(date);
     // weathers.push(weather);
     pops.push(pop * 100);
-    // icons.push(icon);
+    icons.push(icon);
     humidities.push(humidity);
     maxTemps.push(maxTemp);
     minTemps.push(minTemp);
@@ -132,31 +157,46 @@ export default function WeatherChecker() {
   }, []);
   const data = {
     labels: dateLabels,
+    // labels: icons,
     datasets: [
       // {
       //   label: "天気",
       //   data: weathers,
       //   backgroundColor: "rgba(53, 162, 235, 0.5)",
       // },
+      // {
+      //   label: "降水確率",
+      //   data: pops,
+      //   backgroundColor: "rgba(53, 162, 235, 0.5)",
+      //   borderColor: "rgba(53, 162, 235, 0.5)",
+      //   // pointBackgroundColor: white,
+      //   type: "bar",
+      //   yAxisID: "y1",
+      // },
       {
-        label: "降水確率",
-        data: pops,
-        backgroundColor: "rgba(255, 99, 132, 0.5)",
-      },
-      {
+        type: "line",
         label: "気温(最高)",
         data: maxTemps,
-        backgroundColor: "rgba(153, 102, 255, 0.5)",
+        backgroundColor: "red",
+        borderColor: "red",
+        yAxisID: "y",
       },
       {
+        type: "line",
         label: "気温(最低)",
         data: minTemps,
-        backgroundColor: "rgba(255, 159, 64, 0.5)",
+        backgroundColor: "blue",
+        borderColor: "blue",
+        yAxisID: "y",
       },
       {
+        type: "bar",
         label: "湿度",
         data: humidities,
-        backgroundColor: "rgba(75, 192, 192, 0.5)",
+        backgroundColor: "rgba(29, 186, 186, 0.5)",
+        borderColor: "rgba(29, 186, 186, 0.5)",
+        barThickness: 20,
+        yAxisID: "y1",
       },
     ],
   };
@@ -190,7 +230,16 @@ export default function WeatherChecker() {
           </div>
         );
       })}
-      <Line height={500} width={700} options={options} data={data} />
+      <div className="weather">
+        <Line height={150} width={300} options={options} data={data} />
+        <div className="wicons">
+          {icons.map((icon, index) => (
+            <div key={index}>
+              <img src={`${icon}`} alt="Weather icon" />
+            </div>
+          ))}
+        </div>
+      </div>
       {console.log(data)}
     </>
   );

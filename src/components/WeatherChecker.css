@@ -63,3 +63,23 @@
   color: #555;
   /* text-align: center; テキストを中央揃え */
 }
+
+.weather {
+  /* display: flex;
+  flex-direction: column; */
+}
+.wicons {
+  display: grid;
+  grid-template-columns: repeat(8, 12.5%);
+  padding: 0 3%;
+  padding-left: 4%;
+  grid-template-rows: 1fr;
+}
+.wicons img {
+  margin: 0;
+  padding: 0;
+  width: 90%;
+  height: auto;
+  min-width: 10px;
+  min-height: 10px;
+}
