@@ -1,74 +1,8 @@
 import { useState, useEffect } from "react";
 import "./WeatherChecker.css";
 import WeatherCards from "./WeatherCards";
-import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  PointElement,
-  LineElement,
-  Title,
-  Tooltip,
-  Legend,
-} from "chart.js";
-import ChartDataLabels from "chartjs-plugin-datalabels";
-import { Line } from "react-chartjs-2";
-// import { BsBorderWidth } from "react-icons/bs";
-// import { MdBorderColor } from "react-icons/md";
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  BarElement,
-  Title,
-  Tooltip,
-  Legend,
-  ChartDataLabels
-);
-const options = {
-  responsive: true,
-  plugins: {
-    legend: {
-      position: "top",
-    },
-    title: {
-      display: true,
-      text: "Weather Chart",
-    },
-    datalabels: {
-      color: "white",
-      anchor: "end",
-      font: {
-        size: 16,
-        weight: "bold",
-      },
-    },
-  },
-  scales: {
-    x: {
-      stacked: false,
-    },
-    y: {
-      stacked: false,
-      max: 25,
-      min: 10,
-      ticks: {
-        stepSize: 3,
-      },
-    },
-    y1: {
-      stacked: false,
-      position: "right",
-      max: 100,
-      min: 0,
-      ticks: {
-        color: "rgba(29, 186, 186, 0.5)",
-      },
-    },
-  },
-};
+import WeatherChart from "./WeatherChart";
+import WeatherHeader from "./WeatherHeader";
 const convertJapanWeth = (engtemp) => {
   if (engtemp === "Clear") return "晴れ";
   else if (engtemp === "Rain") return "雨";
@@ -83,7 +17,6 @@ const fetchWeatherData = async () => {
     lon: 139.6296175,
   };
   const excludes = "current,minutely,hourly,alerts";
-  // const url = `https://api.openweathermap.org/data/2.5/weather?lat=${here.lat}&lon=${here.lon}&appid=${API_KEY}`;
   const url = `https://api.openweathermap.org/data/3.0/onecall?lat=${here.lat}&lon=${here.lon}&exludes=${excludes}&appid=${API_KEY}`;
   const response = await fetch(url);
   if (!response.ok) {
@@ -112,7 +45,7 @@ export default function WeatherChecker() {
 
   // Kelvinから気温に変換する
   function convertToTemp(kelvin) {
-    return +(kelvin - 273.15).toFixed(2);
+    return +(kelvin - 273.15).toFixed(1);
   }
   function handleClick() {
     setViewFlg(true);
@@ -223,9 +156,9 @@ export default function WeatherChecker() {
         barThickness: 20,
         yAxisID: "y1",
         datalabels: {
-          color: "white",
+          color: "gray",
           anchor: "end",
-          align: "center",
+          align: "20px",
           format: (value) => {
             return value + "%";
           },
@@ -235,20 +168,13 @@ export default function WeatherChecker() {
   };
   return (
     <>
-      <h2>お天気調べましょう！</h2>
-      <button onClick={handleClick}>調べる</button>
-      <button onClick={resetClick}>リセット</button>
-      <WeatherCards weekData={weekData} viewFlg={viewFlg} />
-      <div className="weather">
-        <Line height={150} width={300} options={options} data={data} />
-        <div className="wicons">
-          {icons.map((icon, index) => (
-            <div key={index}>
-              <img src={`${icon}`} alt="Weather icon" />
-            </div>
-          ))}
-        </div>
-      </div>
+      <WeatherHeader handleClick={handleClick} resetClick={resetClick} />
+      <WeatherCards
+        weekData={weekData}
+        viewFlg={viewFlg}
+        convertJapanWeth={convertJapanWeth}
+      />
+      <WeatherChart data={data} icons={icons} viewFlg={viewFlg} />
       {console.log(data)}
     </>
   );

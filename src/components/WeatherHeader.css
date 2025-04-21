@@ -1,0 +1,22 @@
+.weather-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 400px;
+  margin: 15px auto;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.weather-header button {
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: #79ace3;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.weather-header button:hover {
+  background-color: #0056b3;
+}
