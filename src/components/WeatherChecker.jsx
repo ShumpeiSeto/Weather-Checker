@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import "./WeatherChecker.css";
+import WeatherCards from "./WeatherCards";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -13,8 +14,8 @@ import {
 } from "chart.js";
 import ChartDataLabels from "chartjs-plugin-datalabels";
 import { Line } from "react-chartjs-2";
-import { BsBorderWidth } from "react-icons/bs";
-import { MdBorderColor } from "react-icons/md";
+// import { BsBorderWidth } from "react-icons/bs";
+// import { MdBorderColor } from "react-icons/md";
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -35,6 +36,14 @@ const options = {
     title: {
       display: true,
       text: "Weather Chart",
+    },
+    datalabels: {
+      color: "white",
+      anchor: "end",
+      font: {
+        size: 16,
+        weight: "bold",
+      },
     },
   },
   scales: {
@@ -186,6 +195,11 @@ export default function WeatherChecker() {
         backgroundColor: "red",
         borderColor: "red",
         yAxisID: "y",
+        datalabels: {
+          color: "red",
+          anchor: "start",
+          align: "end",
+        },
       },
       {
         type: "line",
@@ -194,6 +208,11 @@ export default function WeatherChecker() {
         backgroundColor: "blue",
         borderColor: "blue",
         yAxisID: "y",
+        datalabels: {
+          color: "blue",
+          anchor: "end",
+          align: "bottom",
+        },
       },
       {
         type: "bar",
@@ -203,6 +222,14 @@ export default function WeatherChecker() {
         borderColor: "rgba(29, 186, 186, 0.5)",
         barThickness: 20,
         yAxisID: "y1",
+        datalabels: {
+          color: "white",
+          anchor: "end",
+          align: "center",
+          format: (value) => {
+            return value + "%";
+          },
+        },
       },
     ],
   };
@@ -211,61 +238,7 @@ export default function WeatherChecker() {
       <h2>お天気調べましょう！</h2>
       <button onClick={handleClick}>調べる</button>
       <button onClick={resetClick}>リセット</button>
-      <div className="weather-infos">
-        {weekData.map((day, index) => {
-          return (
-            <div key={index} className="weather-info">
-              <dt className="date">
-                {index === 0
-                  ? "今日"
-                  : index === 1
-                  ? "明日"
-                  : day.date + "曜日"}
-              </dt>
-              {/* <dt>天気:</dt> */}
-              <dd className="weather">
-                {viewFlg ? (
-                  <span className={day.weather.toLowerCase()}>
-                    {convertJapanWeth(day.weather)}
-                  </span>
-                ) : (
-                  "お天気情報"
-                )}
-              </dd>
-              {viewFlg && <img src={day.icon} alt="お天気アイコンです" />}
-              <dt>降水確率:</dt>
-              <dd className="pop">
-                {viewFlg ? (
-                  <span className="popstr">{(day.pop * 100).toFixed(0)}%</span>
-                ) : (
-                  "降水確率"
-                )}
-              </dd>
-              <dt>最高 / 最低</dt>
-              <dd className="temp">
-                {viewFlg ? (
-                  <>
-                    <span className="maxtemp">{day.maxTemp}</span>
-                    <span className="mintemp">{day.minTemp}</span>
-                  </>
-                ) : (
-                  "気温情報"
-                )}
-              </dd>
-              <dt>湿度:</dt>
-              <dd className="humidity">
-                {viewFlg ? (
-                  <span className="humnum">{day.humidity}%</span>
-                ) : (
-                  "湿度"
-                )}
-              </dd>
-              {/* <dt>地域:</dt>
-            <dd className="area">{viewFlg ? day.date : "調査場所名"}</dd> */}
-            </div>
-          );
-        })}
-      </div>
+      <WeatherCards weekData={weekData} viewFlg={viewFlg} />
       <div className="weather">
         <Line height={150} width={300} options={options} data={data} />
         <div className="wicons">

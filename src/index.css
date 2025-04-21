@@ -9,7 +9,8 @@ html {
   line-height: 1.5;
 
   color: #ebe7ef;
-  background: radial-gradient(#280a48, #20043d);
+  /* background: radial-gradient(#280a48, #20043d); */
+  background: #e6f2ff;
   /* background: white; */
 
   font-synthesis: none;
@@ -29,7 +30,7 @@ main {
 #core-concepts {
   padding: 2rem;
   border-radius: 6px;
-  background-color: #140524;
+  background-color: #1a4b8c;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
 }
 
@@ -110,7 +111,7 @@ main h2 {
 #tab-content {
   padding: 1rem;
   border-radius: 6px;
-  background-color: #2f1d43;
+  background-color: #1a4b8c;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
@@ -127,6 +128,7 @@ div#tab-content + div ul {
   display: flex;
   flex-wrap: wrap;
   gap: 25px;
+  color: #a18aba;
 }
 div#tab-content + div ul li {
   list-style: none;

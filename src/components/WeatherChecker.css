@@ -9,7 +9,7 @@
   flex-direction: column;
   align-items: center;
   padding: 20px;
-  background-color: lightpink;
+  background-color: white;
   border-radius: 8px;
   /* 中央に収めるための幅制限 */
   max-width: 400px;
