@@ -10,7 +10,7 @@ export default function WeatherHeader({
   key,
 }) {
   return (
-    <Section title="お天気チェック" id="examples">
+    <Section title="お天気チェック" id="examples" className="weather-header">
       <Tabs
         buttons={
           <>

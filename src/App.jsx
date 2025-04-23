@@ -9,9 +9,9 @@ function App() {
     <>
       <Header />
       <main>
-        <CoreConcepts />
-        <Examples />
-        <Learnings />
+        {/* <CoreConcepts /> */}
+        {/* <Examples /> */}
+        {/* <Learnings /> */}
         <WeatherChecker />
       </main>
     </>

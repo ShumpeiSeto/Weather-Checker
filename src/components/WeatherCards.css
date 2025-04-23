@@ -1,29 +1,45 @@
+:root {
+  /* 基本となる設定 */
+  --big-card-font-size: 150%;
+  --small-card-font-size: 70%;
+  /* 色関係  */
+  --main-color: #475666;
+  --accent-color: #0056b3;
+  --temp-high: red;
+  --temp-low: rbg(93, 93, 233);
+  /* 配置関係  */
+  --card-gap: 15px;
+  --big-card-height: 410px;
+  --small-card-height: 320px;
+  --card-bgcolor: white;
+  --card-padding: 10px;
+  /* お天気アイコン大きさ */
+  --big-icon-size: 150px;
+  --mediam-icon-size: 110px;
+  --small-icon-size: 70px;
+}
+
 .weather-infos {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
-  grid-template-rows: repeat(2, 1fr);
+  grid-template-rows: var(--big-card-height) var(--small-card-height);
   grid-template-areas:
     ". A A B B ."
     "C D E F G H";
-  gap: 10px;
+  gap: var(--card-gap);
 }
 
 .weather-info {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px;
-  background-color: white;
+  padding: var(--card-padding);
+  background-color: var(--card-bgcolor);
   border-radius: 8px;
-  /* 中央に収めるための幅制限 */
-  margin: auto;
-  /* width: 100%; */
   max-width: 400px;
-
-  /* margin: 15px auto; */
 }
 .weather-info img {
-  width: 70%;
+  width: var(--small-icon-size);
   height: auto;
 }
 .item-0 {
@@ -50,12 +66,6 @@
 .item-7 {
   grid-area: H;
 }
-/* @media screen and (max-width: 600px) {
-  .weather-infos {
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(4, 1fr);
-  }
-} */
 .weather-info h2 {
   margin: 0;
   font-size: 24px;
@@ -86,14 +96,72 @@
   padding: 0;
 }
 
+.weather-info .error-message {
+  color: red;
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+.weather-info dl {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* 中央揃え */
+  gap: 10px; /* 各項目の間隔を調整 */
+}
+
+.weather-info dt {
+  font-weight: bold;
+  color: #333;
+  font-size: 15px;
+}
+
+.weather-info dd {
+  margin: 0;
+  font-size: 16px;
+  color: #555;
+  /* text-align: center; テキストを中央揃え */
+}
+
+.maxtemp {
+  color: red;
+  padding-right: 8px;
+  font-size: 1.3rem;
+}
+.date {
+  font-size: 1.5rem;
+}
+.mintemp {
+  color: rgb(93, 93, 233);
+  font-size: 1.3rem;
+}
+.clouds {
+  font-size: 1.3rem;
+  color: lightslategray;
+}
+.rain {
+  font-size: 1.3rem;
+  color: rgb(84, 84, 206);
+}
+.clear {
+  font-size: 1.3rem;
+  color: rgb(226, 87, 87);
+}
+.popstr {
+  color: blue;
+  font-size: 1.4rem;
+}
+.humnum {
+  font-size: 1.4rem;
+  color: green;
+}
 .item-2 img,
 .item-3 img,
 .item-4 img,
 .item-5 img,
 .item-6 img,
 .item-7 img {
-  width: 70px;
-  height: 70px;
+  width: 80px;
+  height: 80px;
   margin: 0;
   padding: 0;
 }
@@ -119,62 +187,53 @@
 .item-6 dd,
 .item-7 dt,
 .item-7 dd {
-  font-size: 80%;
+  font-size: 70%;
 }
-.weather-info .error-message {
-  color: red;
-  font-size: 16px;
-  margin-top: 10px;
-}
-
-.weather-info dl {
-  display: flex;
-  flex-direction: column;
-  align-items: center; /* 中央揃え */
-  gap: 10px; /* 各項目の間隔を調整 */
+.item-0 .date,
+.item-0 .mintemp,
+.item-0 .maxtemp,
+.item-0 .clouds,
+.item-0 .rain,
+.item-0 .clear,
+.item-0 .popstr,
+.item-0 .humnum {
+  font-size: 150%;
 }
 
-.weather-info dt {
-  font-weight: bold;
-  color: #333;
+.item-1 .date,
+.item-1 .mintemp,
+.item-1 .maxtemp,
+.item-1 .clouds,
+.item-1 .rain,
+.item-1 .clear,
+.item-1 .popstr,
+.item-1 .humnum {
+  font-size: 150%;
 }
 
-.weather-info dd {
-  margin: 0;
-  font-size: 16px;
-  color: #555;
-  /* text-align: center; テキストを中央揃え */
+@media screen and (max-width: 600px) {
+  .weather-infos {
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: 380px repeat(2, 300px);
+    grid-template-areas:
+      ". A A B B ."
+      "C C D D E E"
+      "F F G G H H";
+    column-gap: 7px;
+    row-gap: 10px;
+    min-width: 320px;
+  }
+  .item-0 *,
+  .item-1 * {
+    font-size: 80%;
+  }
+  .item-0 img,
+  .item-1 img {
+    width: 130px;
+    height: 130px;
+  }
 }
-
-.maxtemp {
-  color: red;
-  padding-right: 8px;
-  font-size: 1.3rem;
-}
-.date {
-  font-size: 1.6rem;
-}
-.mintemp {
-  color: rgb(93, 93, 233);
-  font-size: 1.3rem;
-}
-.clouds {
-  font-size: 1.5rem;
-  color: lightslategray;
-}
-.rain {
-  font-size: 1.5rem;
-  color: rgb(84, 84, 206);
-}
-.clear {
-  font-size: 1.5rem;
-  color: rgb(226, 87, 87);
-}
-.popstr {
-  color: blue;
-  font-size: 1.4rem;
-}
-.humnum {
-  font-size: 1.2rem;
-  color: green;
+.weather canvas {
+  width: 100%;
+  height: auto;
 }

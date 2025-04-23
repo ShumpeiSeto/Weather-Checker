@@ -17,8 +17,8 @@ export default function WeatherCard({ day, index, convertJapanWeth }) {
       </dd>
       <dt>最高 / 最低</dt>
       <dd className="temp">
-        <span className="maxtemp">{day.maxTemp}</span>
-        <span className="mintemp">{day.minTemp}</span>
+        <span className="maxtemp">{day.maxTemp.toFixed(0)}°c</span>
+        <span className="mintemp">{day.minTemp.toFixed(0)}°c</span>
       </dd>
       <dt>湿度:</dt>
       <dd className="humidity">
