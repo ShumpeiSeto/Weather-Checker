@@ -12,8 +12,6 @@ import {
 } from "chart.js";
 import ChartDataLabels from "chartjs-plugin-datalabels";
 import { Line } from "react-chartjs-2";
-// import { BsBorderWidth } from "react-icons/bs";
-// import { MdBorderColor } from "react-icons/md";
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -68,18 +66,16 @@ export default function WeatherChart({ data, icons, viewFlg }) {
       },
     },
   };
-  return (
-    { viewFlg } && (
-      <div className="weather">
-        <Line height={150} width={300} options={options} data={data} />
-        <div className="wicons">
-          {icons.map((icon, index) => (
-            <div key={index}>
-              <img src={`${icon}`} alt="Weather icon" />
-            </div>
-          ))}
-        </div>
+  return viewFlg ? (
+    <div className="weather">
+      <Line height={150} width={300} options={options} data={data} />
+      <div className="wicons">
+        {icons.map((icon, index) => (
+          <div key={index}>
+            <img src={`${icon}`} alt="Weather icon" />
+          </div>
+        ))}
       </div>
-    )
-  );
+    </div>
+  ) : null;
 }

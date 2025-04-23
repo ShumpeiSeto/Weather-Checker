@@ -3,6 +3,8 @@ import "./WeatherChecker.css";
 import WeatherCards from "./WeatherCards";
 import WeatherChart from "./WeatherChart";
 import WeatherHeader from "./WeatherHeader";
+import { setsEqual } from "chart.js/helpers";
+// 天気を日本語に変える
 const convertJapanWeth = (engtemp) => {
   if (engtemp === "Clear") return "晴れ";
   else if (engtemp === "Rain") return "雨";
@@ -43,15 +45,23 @@ export default function WeatherChecker() {
   const minTemps = [];
   const icons = [];
 
+  const [viewMode, setViewMode] = useState(0);
+
+  function weekClick(selectedButton) {
+    setViewMode(selectedButton);
+    setViewFlg(true);
+  }
+  function dailyClick(selectedButton) {
+    setViewMode(selectedButton);
+    setViewFlg(true);
+  }
+  function resetClick(selectedButton) {
+    setViewMode(selectedButton);
+    setViewFlg(false);
+  }
   // Kelvinから気温に変換する
   function convertToTemp(kelvin) {
     return +(kelvin - 273.15).toFixed(1);
-  }
-  function handleClick() {
-    setViewFlg(true);
-  }
-  function resetClick() {
-    setViewFlg(false);
   }
   useEffect(() => {
     fetchWeatherData()
@@ -168,7 +178,12 @@ export default function WeatherChecker() {
   };
   return (
     <>
-      <WeatherHeader handleClick={handleClick} resetClick={resetClick} />
+      <WeatherHeader
+        weekClick={weekClick}
+        dailyClick={dailyClick}
+        resetClick={resetClick}
+        viewMode={viewMode}
+      />
       <WeatherCards
         weekData={weekData}
         viewFlg={viewFlg}
