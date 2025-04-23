@@ -1,9 +1,13 @@
 .weather-infos {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: 1fr 1fr;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-template-areas:
+    ". A A B B ."
+    "C D E F G H";
   gap: 10px;
 }
+
 .weather-info {
   display: flex;
   flex-direction: column;
@@ -12,10 +16,46 @@
   background-color: white;
   border-radius: 8px;
   /* 中央に収めるための幅制限 */
+  margin: auto;
+  /* width: 100%; */
   max-width: 400px;
-  margin: 15px auto;
-}
 
+  /* margin: 15px auto; */
+}
+.weather-info img {
+  width: 70%;
+  height: auto;
+}
+.item-0 {
+  grid-area: A;
+}
+.item-1 {
+  grid-area: B;
+}
+.item-2 {
+  grid-area: C;
+}
+.item-3 {
+  grid-area: D;
+}
+.item-4 {
+  grid-area: E;
+}
+.item-5 {
+  grid-area: F;
+}
+.item-6 {
+  grid-area: G;
+}
+.item-7 {
+  grid-area: H;
+}
+/* @media screen and (max-width: 600px) {
+  .weather-infos {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+  }
+} */
 .weather-info h2 {
   margin: 0;
   font-size: 24px;
@@ -46,6 +86,41 @@
   padding: 0;
 }
 
+.item-2 img,
+.item-3 img,
+.item-4 img,
+.item-5 img,
+.item-6 img,
+.item-7 img {
+  width: 70px;
+  height: 70px;
+  margin: 0;
+  padding: 0;
+}
+
+.item-2 .date,
+.item-3 .date,
+.item-4 .date,
+.item-5 .date,
+.item-6 .date,
+.item-7 .date {
+  font-size: 1em;
+}
+
+.item-2 dt,
+.item-2 dd,
+.item-3 dt,
+.item-3 dd,
+.item-4 dt,
+.item-4 dd,
+.item-5 dt,
+.item-5 dd,
+.item-6 dt,
+.item-6 dd,
+.item-7 dt,
+.item-7 dd {
+  font-size: 80%;
+}
 .weather-info .error-message {
   color: red;
   font-size: 16px;
