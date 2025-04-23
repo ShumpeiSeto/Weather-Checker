@@ -14,10 +14,21 @@ const convertJapanWeth = (engtemp) => {
 const fetchWeatherData = async () => {
   // お天気API取得のための変数
   const API_KEY = "c80c3b32e313fbc3c6f358e4c6717881";
-  const here = {
-    lat: 35.472734,
-    lon: 139.6296175,
-  };
+  const here = {};
+
+  // 現在地取得する
+  function success(pos) {
+    const lat = pos.coords.latitude;
+    const lon = pos.coords.longitude;
+    const accuracy = pos.coords.accuracy;
+    here.lat = lat;
+    here.lon = lon;
+  }
+  function fail(error) {
+    window.alert("位置情報の取得に失敗しましたエラー:", error.code);
+  }
+  navigator.geolocation.getCurrentPosition(success, fail);
+
   const excludes = "current,minutely,hourly,alerts";
   const url = `https://api.openweathermap.org/data/3.0/onecall?lat=${here.lat}&lon=${here.lon}&exludes=${excludes}&appid=${API_KEY}`;
   const response = await fetch(url);

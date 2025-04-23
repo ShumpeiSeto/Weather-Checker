@@ -210,11 +210,25 @@
 .item-1 .humnum {
   font-size: 150%;
 }
+/* 今日明日の天気を少し目立たせたい */
+.item-0,
+.item-1 {
+  border: 1px solid #4a90e2;
+  box-shadow: 0 4px 8px lightblue;
+}
+.item-2,
+.item-3,
+.item-4,
+.item-5,
+.item-6,
+.item-7 {
+  box-shadow: 0 4px 8px gray;
+}
 
 @media screen and (max-width: 600px) {
   .weather-infos {
     grid-template-columns: repeat(6, 1fr);
-    grid-template-rows: 380px repeat(2, 300px);
+    grid-template-rows: 400px repeat(2, 300px);
     grid-template-areas:
       ". A A B B ."
       "C C D D E E"
