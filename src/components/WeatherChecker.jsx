@@ -20,6 +20,7 @@ const fetchWeatherData = async () => {
   function success(pos) {
     const lat = pos.coords.latitude;
     const lon = pos.coords.longitude;
+    console.log(lat, lon);
     const accuracy = pos.coords.accuracy;
     here.lat = lat;
     here.lon = lon;
@@ -28,9 +29,10 @@ const fetchWeatherData = async () => {
     window.alert("位置情報の取得に失敗しましたエラー:", error.code);
   }
   navigator.geolocation.getCurrentPosition(success, fail);
+  console.log(here);
 
   const excludes = "current,minutely,hourly,alerts";
-  const url = `https://api.openweathermap.org/data/3.0/onecall?lat=${here.lat}&lon=${here.lon}&exludes=${excludes}&appid=${API_KEY}`;
+  const url = `https://api.openweathermap.org/data/3.0/onecall?lat=${here.lat}&lon=${here.lon}&excludes=${excludes}&appid=${API_KEY}`;
   const response = await fetch(url);
   if (!response.ok) {
     const error = await response.text();
