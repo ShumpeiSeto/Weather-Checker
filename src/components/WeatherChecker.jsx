@@ -3,7 +3,7 @@ import "./WeatherChecker.css";
 import WeatherCards from "./WeatherCards";
 import WeatherChart from "./WeatherChart";
 import WeatherHeader from "./WeatherHeader";
-import { setsEqual } from "chart.js/helpers";
+// import { setsEqual } from "chart.js/helpers";
 // 天気を日本語に変える
 const convertJapanWeth = (engtemp) => {
   if (engtemp === "Clear") return "晴れ";
@@ -49,6 +49,7 @@ export default function WeatherChecker() {
   const [error, setError] = useState(null);
   const [weatherData, setWeatherData] = useState(null);
   const [viewFlg, setViewFlg] = useState(false);
+  const [location, setLocation] = useState(null);
   // chart用のデータ変数
   const dateLabels = [];
   const pops = [];
@@ -76,6 +77,23 @@ export default function WeatherChecker() {
   function convertToTemp(kelvin) {
     return +(kelvin - 273.15).toFixed(1);
   }
+
+  useEffect(() => {
+    // 現在地取得する
+    function success(pos) {
+      const lat = pos.coords.latitude;
+      const lon = pos.coords.longitude;
+      console.log(lat, lon);
+      const accuracy = pos.coords.accuracy;
+      setLocation({ lat, lon });
+    }
+    function fail(error) {
+      window.alert("位置情報の取得に失敗しましたエラー:", error.code);
+    }
+    navigator.geolocation.getCurrentPosition(success, fail);
+  });
+  //
+  // 取得したデータを表示するためのuseEffect
   useEffect(() => {
     fetchWeatherData()
       .then((data) => setWeatherData(data))
@@ -190,20 +208,22 @@ export default function WeatherChecker() {
     ],
   };
   return (
-    <>
-      <WeatherHeader
-        weekClick={weekClick}
-        dailyClick={dailyClick}
-        resetClick={resetClick}
-        viewMode={viewMode}
-      />
-      <WeatherCards
-        weekData={weekData}
-        viewFlg={viewFlg}
-        convertJapanWeth={convertJapanWeth}
-      />
-      <WeatherChart data={data} icons={icons} viewFlg={viewFlg} />
-      {console.log(data)}
-    </>
+    location && (
+      <>
+        <WeatherHeader
+          weekClick={weekClick}
+          dailyClick={dailyClick}
+          resetClick={resetClick}
+          viewMode={viewMode}
+        />
+        <WeatherCards
+          weekData={weekData}
+          viewFlg={viewFlg}
+          convertJapanWeth={convertJapanWeth}
+        />
+        <WeatherChart data={data} icons={icons} viewFlg={viewFlg} />
+        {console.log(data)}
+      </>
+    )
   );
 }
