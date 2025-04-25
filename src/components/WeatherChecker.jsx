@@ -3,6 +3,7 @@ import "./WeatherChecker.css";
 import WeatherCards from "./WeatherCards";
 import WeatherChart from "./WeatherChart";
 import WeatherHeader from "./WeatherHeader";
+import { useCallback } from "react";
 // import { setsEqual } from "chart.js/helpers";
 // 天気を日本語に変える
 const convertJapanWeth = (engtemp) => {
@@ -11,39 +12,39 @@ const convertJapanWeth = (engtemp) => {
   else if (engtemp === "Clouds") return "くもり";
   else return "雪";
 };
-const fetchWeatherData = async () => {
-  // お天気API取得のための変数
-  const API_KEY = "c80c3b32e313fbc3c6f358e4c6717881";
-  const here = {};
 
-  // 現在地取得する
-  function success(pos) {
-    const lat = pos.coords.latitude;
-    const lon = pos.coords.longitude;
-    console.log(lat, lon);
-    const accuracy = pos.coords.accuracy;
-    here.lat = lat;
-    here.lon = lon;
-  }
-  function fail(error) {
-    window.alert("位置情報の取得に失敗しましたエラー:", error.code);
-  }
-  navigator.geolocation.getCurrentPosition(success, fail);
-  console.log(here);
+// const fetchWeatherData = async (location) => {
+//   if (!location) {
+//     throw new Error("Location is not defined");
+//   }
+//   // お天気API取得のための変数
+//   const API_KEY = "c80c3b32e313fbc3c6f358e4c6717881";
+//   const excludes = "current,minutely,hourly,alerts";
+//   const url = `https://api.openweathermap.org/data/3.0/onecall?lat=${location.lat}&lon=${location.lon}&excludes=${excludes}&appid=${API_KEY}`;
+//   const response = await fetch(url);
 
-  const excludes = "current,minutely,hourly,alerts";
-  const url = `https://api.openweathermap.org/data/3.0/onecall?lat=${here.lat}&lon=${here.lon}&excludes=${excludes}&appid=${API_KEY}`;
-  const response = await fetch(url);
-  if (!response.ok) {
-    const error = await response.text();
-    throw new Error(
-      `HTTP error! status: ${response.status}, message: ${error}`
-    );
-  } else {
-    // body部分をJSON形式と考えて、オブジェクト形式変える
-    return await response.json();
-  }
-};
+//   // 現在地取得する
+//   function success(pos) {
+//     const lat = pos.coords.latitude;
+//     const lon = pos.coords.longitude;
+//     console.log(lat, lon);
+//     // const accuracy = pos.coords.accuracy;
+//   }
+//   function fail(error) {
+//     window.alert("位置情報の取得に失敗しましたエラー:", error.code);
+//   }
+//   navigator.geolocation.getCurrentPosition(success, fail);
+
+//   if (!response.ok) {
+//     const error = await response.text();
+//     throw new Error(
+//       `HTTP error! status: ${response.status}, message: ${error}`
+//     );
+//   } else {
+//     // body部分をJSON形式と考えて、オブジェクト形式変える
+//     return await response.json();
+//   }
+// };
 export default function WeatherChecker() {
   const [isLoading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -78,39 +79,89 @@ export default function WeatherChecker() {
     return +(kelvin - 273.15).toFixed(1);
   }
 
+  // Loading中の表示
+  // if (isLoading) {
+  //   return <div>Loading...</div>;
+  // }
+  // if (error) {
+  //   return <div>{`データ取得エラー：${error.message}`}</div>;
+  // }
+  // お天気情報取得
+  const fetchWeatherData = async (location) => {
+    if (!location) {
+      throw new Error("Location is not defined");
+    }
+    const API_KEY = "c80c3b32e313fbc3c6f358e4c6717881";
+    const excludes = "current,minutely,hourly,alerts";
+    const url = `https://api.openweathermap.org/data/3.0/onecall?lat=${location.lat}&lon=${location.lon}&excludes=${excludes}&appid=${API_KEY}`;
+    const response = await fetch(url);
+
+    if (!response.ok) {
+      const error = await response.text();
+      throw new Error(
+        `HTTP error! status: ${response.status}, message: ${error}`
+      );
+    }
+    return await response.json();
+  };
+  // 現在地取得する
+  // function success(pos) {
+  //   const lat = pos.coords.latitude;
+  //   const lon = pos.coords.longitude;
+  //   console.log(lat, lon);
+  //   const accuracy = pos.coords.accuracy;
+  //   setLocation({ lat, lon });
+  // }
+  // function fail(error) {
+  //   window.alert("位置情報の取得に失敗しましたエラー:", error.code);
+  // }
+  console.log("現在地情報を取得します");
   useEffect(() => {
-    // 現在地取得する
-    function success(pos) {
-      const lat = pos.coords.latitude;
-      const lon = pos.coords.longitude;
-      console.log(lat, lon);
-      const accuracy = pos.coords.accuracy;
-      setLocation({ lat, lon });
-    }
-    function fail(error) {
-      window.alert("位置情報の取得に失敗しましたエラー:", error.code);
-    }
-    navigator.geolocation.getCurrentPosition(success, fail);
-  });
+    const options = {
+      enableHighAccuracy: true,
+      maximumAge: 30000,
+      timeout: 27000,
+    };
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        setLocation({
+          lat: position.coords.latitude,
+          lon: position.coords.longitude,
+        });
+      },
+      (err) => {
+        setError("位置情報使えないです", err);
+        setLoading(false);
+      },
+      options
+    );
+  }, []);
   //
   // 取得したデータを表示するためのuseEffect
   useEffect(() => {
-    fetchWeatherData()
-      .then((data) => setWeatherData(data))
-      .catch((err) => setError(err.message))
-      .finally(() => setLoading(false));
-  }, []);
+    if (location) {
+      setLoading(true);
+      setError(null);
+      fetchWeatherData(location)
+        .then((data) => {
+          console.log("Weather data fetched:", data);
+          setWeatherData(data);
+        })
+        .catch((err) => {
+          console.error("Error fetching weather data:", err);
+          setError(err.message);
+        })
+        .finally(() => {
+          console.log("Loading state set to false");
+          setLoading(false);
+        });
+    }
+  }, [location]);
+  // ここは[location]としたいが、エラー多いため抜いておく
   console.log(weatherData);
-  // Loading中の表示
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
-  if (error) {
-    return <div>{`データ取得エラー：${error.message}`}</div>;
-  }
-  const dailyData = weatherData.daily;
+  const dailyData = weatherData?.daily;
   console.log(dailyData);
-  const weekData = dailyData.reduce((acc, day) => {
+  const weekData = dailyData?.reduce((acc, day) => {
     const date = new Date(day.dt * 1000).toLocaleDateString("ja-JP", {
       weekday: "short",
     });
@@ -208,7 +259,8 @@ export default function WeatherChecker() {
     ],
   };
   return (
-    location && (
+    location &&
+    weekData && (
       <>
         <WeatherHeader
           weekClick={weekClick}

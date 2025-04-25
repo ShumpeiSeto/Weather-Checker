@@ -9,7 +9,7 @@ export default function Header() {
       <h1>
         PEIPEIの
         <br />
-        お天気占い❤
+        お天気占い
       </h1>
       <p className="subtitle">あなたの一日を彩る、心地よい天気情報</p>
     </header>
