@@ -49,6 +49,7 @@ export default function WeatherChecker() {
   const [isLoading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [weatherData, setWeatherData] = useState(null);
+  const [currentData, setCurrentData] = useState(null);
   const [viewFlg, setViewFlg] = useState(false);
   const [location, setLocation] = useState(null);
   // chart用のデータ変数
@@ -92,8 +93,8 @@ export default function WeatherChecker() {
       throw new Error("Location is not defined");
     }
     const API_KEY = "c80c3b32e313fbc3c6f358e4c6717881";
-    const excludes = "current,minutely,hourly,alerts";
-    const url = `https://api.openweathermap.org/data/3.0/onecall?lat=${location.lat}&lon=${location.lon}&excludes=${excludes}&appid=${API_KEY}`;
+    // const excludes = "current,minutely,hourly,alerts";
+    const url = `https://api.openweathermap.org/data/3.0/onecall?lat=${location.lat}&lon=${location.lon}&exclude=minutely,hourly,alerts&appid=${API_KEY}`;
     const response = await fetch(url);
 
     if (!response.ok) {
@@ -159,7 +160,7 @@ export default function WeatherChecker() {
   }, [location]);
   // ここは[location]としたいが、エラー多いため抜いておく
   console.log(weatherData);
-  const dailyData = weatherData?.daily;
+  const dailyData = weatherData.splice().shift()?.daily;
   console.log(dailyData);
   const weekData = dailyData?.reduce((acc, day) => {
     const date = new Date(day.dt * 1000).toLocaleDateString("ja-JP", {
@@ -173,6 +174,14 @@ export default function WeatherChecker() {
     const iconId = day.weather.at(0).icon;
     const icon = `https://openweathermap.org/img/wn/${iconId}@2x.png`;
 
+    const {
+      current: {
+        humadity: currentHum,
+        temp: currentTemp,
+        weather: [currentData],
+      },
+    } = weatherData;
+    console.log(currentData);
     // chart用のデータを格納する
     dateLabels.push(date);
     // weathers.push(weather);

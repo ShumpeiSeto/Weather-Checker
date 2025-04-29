@@ -1,4 +1,9 @@
-export default function WeatherCard({ day, index, convertJapanWeth }) {
+export default function WeatherCard({
+  currentData,
+  day,
+  index,
+  convertJapanWeth,
+}) {
   return (
     <div className={`weather-info item-${index}`} key={index}>
       <dt className="date">

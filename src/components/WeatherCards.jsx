@@ -8,6 +8,7 @@ export default function WeatherCards({ weekData, viewFlg, convertJapanWeth }) {
           viewFlg && (
             <WeatherCard
               key={index}
+              current={current}
               day={day}
               index={index}
               convertJapanWeth={convertJapanWeth}
