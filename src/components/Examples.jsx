@@ -3,7 +3,8 @@ import { useState } from "react";
 import TabButton from "./TabButton.jsx";
 import Section from "./Section.jsx";
 import Tabs from "./Tabs.jsx";
-import { EXAMPLES } from "../data.js";
+import { EXAMPLES } from "../data.jsx";
+import { WEATHER_KNOWLEDGE } from "../data.jsx";
 
 export default function Examples() {
   const [selectedTopic, setSelectedTopic] = useState();
@@ -19,43 +20,41 @@ export default function Examples() {
   if (selectedTopic) {
     tabContent = (
       <div id="tab-content">
-        <h3>{EXAMPLES[selectedTopic].title}</h3>
-        <p>{EXAMPLES[selectedTopic].description}</p>
-        <pre>
-          <code>{EXAMPLES[selectedTopic].code}</code>
-        </pre>
+        <h3>{WEATHER_KNOWLEDGE[selectedTopic].title}</h3>
+        <p>{WEATHER_KNOWLEDGE[selectedTopic].description}</p>
+        {WEATHER_KNOWLEDGE[selectedTopic].content}
       </div>
     );
   }
 
   return (
-    <Section title="About React" id="examples">
+    <Section title="天気予報について" id="examples">
       <Tabs
         buttons={
           <>
             <TabButton
-              isSelected={selectedTopic === "components"}
-              onClick={() => handleSelect("components")}
+              isSelected={selectedTopic === "forecasting"}
+              onClick={() => handleSelect("forecasting")}
             >
-              Components
+              天気予報のしくみ
             </TabButton>
             <TabButton
-              isSelected={selectedTopic === "jsx"}
-              onClick={() => handleSelect("jsx")}
+              isSelected={selectedTopic === "symbols"}
+              onClick={() => handleSelect("symbols")}
             >
-              JSX
+              天気記号の見方
             </TabButton>
             <TabButton
-              isSelected={selectedTopic === "props"}
-              onClick={() => handleSelect("props")}
+              isSelected={selectedTopic === "seasons"}
+              onClick={() => handleSelect("seasons")}
             >
-              Props
+              季節と天気
             </TabButton>
             <TabButton
-              isSelected={selectedTopic === "state"}
-              onClick={() => handleSelect("state")}
+              isSelected={selectedTopic === "tips"}
+              onClick={() => handleSelect("tips")}
             >
-              State
+              おすすめの天気対策
             </TabButton>
           </>
         }

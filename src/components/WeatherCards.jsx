@@ -1,14 +1,17 @@
 import "./WeatherCards.css";
 import WeatherCard from "./WeatherCard";
-export default function WeatherCards({ weekData, viewFlg, convertJapanWeth }) {
+export default function WeatherCards({
+  otherWeekData,
+  viewFlg,
+  convertJapanWeth,
+}) {
   return (
     <div className="weather-infos">
-      {weekData.map((day, index) => {
+      {otherWeekData.map((day, index) => {
         return (
-          viewFlg && (
+          viewFlg === 1 && (
             <WeatherCard
               key={index}
-              current={current}
               day={day}
               index={index}
               convertJapanWeth={convertJapanWeth}

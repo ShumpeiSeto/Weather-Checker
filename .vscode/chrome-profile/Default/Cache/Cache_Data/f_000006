@@ -1,0 +1,227 @@
+import { createHotContext as __vite__createHotContext } from "/@vite/client";import.meta.hot = __vite__createHotContext("/src/components/Learnings.jsx");import __vite__cjsImport0_react_jsxDevRuntime from "/node_modules/.vite/deps/react_jsx-dev-runtime.js?v=92ce8794"; const Fragment = __vite__cjsImport0_react_jsxDevRuntime["Fragment"]; const jsxDEV = __vite__cjsImport0_react_jsxDevRuntime["jsxDEV"];
+import RefreshRuntime from "/@react-refresh";
+const inWebWorker = typeof WorkerGlobalScope !== "undefined" && self instanceof WorkerGlobalScope;
+let prevRefreshReg;
+let prevRefreshSig;
+if (import.meta.hot && !inWebWorker) {
+  if (!window.__vite_plugin_react_preamble_installed__) {
+    throw new Error("@vitejs/plugin-react can't detect preamble. Something is wrong. See https://github.com/vitejs/vite-plugin-react/pull/11#discussion_r430879201");
+  }
+  prevRefreshReg = window.$RefreshReg$;
+  prevRefreshSig = window.$RefreshSig$;
+  window.$RefreshReg$ = (type, id) => {
+    RefreshRuntime.register(type, "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/Learnings.jsx " + id);
+  };
+  window.$RefreshSig$ = RefreshRuntime.createSignatureFunctionForTransform;
+}
+var _s = $RefreshSig$();
+import __vite__cjsImport3_react from "/node_modules/.vite/deps/react.js?v=92ce8794"; const useState = __vite__cjsImport3_react["useState"];
+import TabButton from "/src/components/TabButton.jsx";
+import Section from "/src/components/Section.jsx";
+import Tabs from "/src/components/Tabs.jsx";
+import { REACT_LEARNING_TABS } from "/src/data.js";
+import CoreConcept from "/src/components/CoreConcept.jsx";
+import {
+  DiApple,
+  DiAndroid,
+  DiAppcelerator,
+  DiAsterisk,
+  DiAws
+} from "/node_modules/.vite/deps/react-icons_di.js?v=92ce8794";
+export default function Learnings() {
+  _s();
+  const [selectedLearning, setSelectedLearning] = useState();
+  function generateIcon(contentId) {
+    if (contentId === "basics") {
+      return /* @__PURE__ */ jsxDEV(DiApple, {}, void 0, false, {
+        fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/Learnings.jsx",
+        lineNumber: 20,
+        columnNumber: 14
+      }, this);
+    } else if (contentId === "intermediate") {
+      return /* @__PURE__ */ jsxDEV(DiAndroid, {}, void 0, false, {
+        fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/Learnings.jsx",
+        lineNumber: 22,
+        columnNumber: 14
+      }, this);
+    } else if (contentId === "advanced") {
+      return /* @__PURE__ */ jsxDEV(DiAsterisk, {}, void 0, false, {
+        fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/Learnings.jsx",
+        lineNumber: 24,
+        columnNumber: 14
+      }, this);
+    } else if (contentId === "ecosystem") {
+      return /* @__PURE__ */ jsxDEV(DiAppcelerator, {}, void 0, false, {
+        fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/Learnings.jsx",
+        lineNumber: 26,
+        columnNumber: 14
+      }, this);
+    }
+  }
+  function handleSelect(selectedButton) {
+    setSelectedLearning(selectedButton);
+    console.log(selectedLearning);
+  }
+  let tabContent = /* @__PURE__ */ jsxDEV("p", { children: "Please select a topic." }, void 0, false, {
+    fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/Learnings.jsx",
+    lineNumber: 37,
+    columnNumber: 20
+  }, this);
+  if (selectedLearning) {
+    const [matchObj] = REACT_LEARNING_TABS.filter(
+      (content) => content.id === selectedLearning
+    );
+    console.log(matchObj);
+    const learningTopics = matchObj.content.topics.map(
+      (el) => /* @__PURE__ */ jsxDEV("li", { children: /* @__PURE__ */ jsxDEV("h4", { children: el?.title }, void 0, false, {
+        fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/Learnings.jsx",
+        lineNumber: 47,
+        columnNumber: 9
+      }, this) }, el.id, false, {
+        fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/Learnings.jsx",
+        lineNumber: 46,
+        columnNumber: 5
+      }, this)
+    );
+    tabContent = /* @__PURE__ */ jsxDEV(Fragment, { children: [
+      /* @__PURE__ */ jsxDEV("div", { id: "tab-content", children: [
+        generateIcon(selectedLearning),
+        /* @__PURE__ */ jsxDEV("h3", { children: matchObj?.content?.title }, void 0, false, {
+          fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/Learnings.jsx",
+          lineNumber: 55,
+          columnNumber: 11
+        }, this),
+        /* @__PURE__ */ jsxDEV("p", { children: matchObj?.content?.description }, void 0, false, {
+          fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/Learnings.jsx",
+          lineNumber: 56,
+          columnNumber: 11
+        }, this)
+      ] }, matchObj.id, true, {
+        fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/Learnings.jsx",
+        lineNumber: 53,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ jsxDEV("div", { id: `${matchObj.id}-topic`, children: /* @__PURE__ */ jsxDEV("ul", { children: learningTopics }, void 0, false, {
+        fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/Learnings.jsx",
+        lineNumber: 59,
+        columnNumber: 11
+      }, this) }, `${matchObj.id}-topics`, false, {
+        fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/Learnings.jsx",
+        lineNumber: 58,
+        columnNumber: 9
+      }, this)
+    ] }, void 0, true, {
+      fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/Learnings.jsx",
+      lineNumber: 52,
+      columnNumber: 5
+    }, this);
+  }
+  return /* @__PURE__ */ jsxDEV(Section, { title: "Learnings Map and EcoSystem", id: "examples", children: /* @__PURE__ */ jsxDEV(
+    Tabs,
+    {
+      buttons: /* @__PURE__ */ jsxDEV(Fragment, { children: [
+        /* @__PURE__ */ jsxDEV(
+          TabButton,
+          {
+            isSelected: selectedLearning === "basics",
+            onClick: () => handleSelect("basics"),
+            children: "Basics"
+          },
+          "basics",
+          false,
+          {
+            fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/Learnings.jsx",
+            lineNumber: 70,
+            columnNumber: 13
+          },
+          this
+        ),
+        /* @__PURE__ */ jsxDEV(
+          TabButton,
+          {
+            isSelected: selectedLearning === "intermediate",
+            onClick: () => handleSelect("intermediate"),
+            children: "Intermediate"
+          },
+          "intermediate",
+          false,
+          {
+            fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/Learnings.jsx",
+            lineNumber: 77,
+            columnNumber: 13
+          },
+          this
+        ),
+        /* @__PURE__ */ jsxDEV(
+          TabButton,
+          {
+            isSelected: selectedLearning === "advanced",
+            onClick: () => handleSelect("advanced"),
+            children: "Advanced"
+          },
+          "advanced",
+          false,
+          {
+            fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/Learnings.jsx",
+            lineNumber: 84,
+            columnNumber: 13
+          },
+          this
+        ),
+        /* @__PURE__ */ jsxDEV(
+          TabButton,
+          {
+            isSelected: selectedLearning === "ecosystem",
+            onClick: () => handleSelect("ecosystem"),
+            children: "Ecosystem"
+          },
+          "ecosystem",
+          false,
+          {
+            fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/Learnings.jsx",
+            lineNumber: 91,
+            columnNumber: 13
+          },
+          this
+        )
+      ] }, void 0, true, {
+        fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/Learnings.jsx",
+        lineNumber: 69,
+        columnNumber: 9
+      }, this),
+      children: tabContent
+    },
+    void 0,
+    false,
+    {
+      fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/Learnings.jsx",
+      lineNumber: 67,
+      columnNumber: 7
+    },
+    this
+  ) }, void 0, false, {
+    fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/Learnings.jsx",
+    lineNumber: 66,
+    columnNumber: 5
+  }, this);
+}
+_s(Learnings, "8SgZVTXUJB1/z1I1Y6opZw898iI=");
+_c = Learnings;
+var _c;
+$RefreshReg$(_c, "Learnings");
+if (import.meta.hot && !inWebWorker) {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+if (import.meta.hot && !inWebWorker) {
+  RefreshRuntime.__hmr_import(import.meta.url).then((currentExports) => {
+    RefreshRuntime.registerExportsForReactRefresh("C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/Learnings.jsx", currentExports);
+    import.meta.hot.accept((nextExports) => {
+      if (!nextExports) return;
+      const invalidateMessage = RefreshRuntime.validateRefreshBoundaryAndEnqueueUpdate("C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/Learnings.jsx", currentExports, nextExports);
+      if (invalidateMessage) import.meta.hot.invalidate(invalidateMessage);
+    });
+  });
+}
+
+//# sourceMappingURL=data:application/json;base64,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QTtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUEsUUFNQTtBQUFBLFFBQ0E7QUFBQSxVQUFDO0FBQUE7QUFBQSxZQUNDLFlBQVlMLHFCQUFxQjtBQUFBLFlBQ2pDLFNBQVMsTUFBTUssYUFBYSxjQUFjO0FBQUEsWUFDeEI7QUFBQTtBQUFBLFVBQWQ7QUFBQSxVQUhOO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUEsUUFNQTtBQUFBLFFBQ0E7QUFBQSxVQUFDO0FBQUE7QUFBQSxZQUNDLFlBQVlMLHFCQUFxQjtBQUFBLFlBQ2pDLFNBQVMsTUFBTUssYUFBYSxVQUFVO0FBQUEsWUFDeEI7QUFBQTtBQUFBLFVBQVY7QUFBQSxVQUhOO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUEsUUFNQTtBQUFBLFFBQ0E7QUFBQSxVQUFDO0FBQUE7QUFBQSxZQUNDLFlBQVlMLHFCQUFxQjtBQUFBLFlBQ2pDLFNBQVMsTUFBTUssYUFBYSxXQUFXO0FBQUEsWUFDeEI7QUFBQTtBQUFBLFVBQVg7QUFBQSxVQUhOO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUEsUUFNQTtBQUFBLFdBNUJGO0FBQUE7QUFBQTtBQUFBO0FBQUEsYUE2QkE7QUFBQSxNQUdESTtBQUFBQTtBQUFBQSxJQWxDSDtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUEsRUFtQ0EsS0FwQ0Y7QUFBQTtBQUFBO0FBQUE7QUFBQSxTQXFDQTtBQUVKO0FBQUNWLEdBekZ1QkQsV0FBUztBQUFBc0IsS0FBVHRCO0FBQVMsSUFBQXNCO0FBQUFDLGFBQUFELElBQUEiLCJuYW1lcyI6WyJUYWJCdXR0b24iLCJTZWN0aW9uIiwiVGFicyIsIlJFQUNUX0xFQVJOSU5HX1RBQlMiLCJDb3JlQ29uY2VwdCIsIkRpQXBwbGUiLCJEaUFuZHJvaWQiLCJEaUFwcGNlbGVyYXRvciIsIkRpQXN0ZXJpc2siLCJEaUF3cyIsIkxlYXJuaW5ncyIsIl9zIiwic2VsZWN0ZWRMZWFybmluZyIsInNldFNlbGVjdGVkTGVhcm5pbmciLCJ1c2VTdGF0ZSIsImdlbmVyYXRlSWNvbiIsImNvbnRlbnRJZCIsImhhbmRsZVNlbGVjdCIsInNlbGVjdGVkQnV0dG9uIiwiY29uc29sZSIsImxvZyIsInRhYkNvbnRlbnQiLCJtYXRjaE9iaiIsImZpbHRlciIsImNvbnRlbnQiLCJpZCIsImxlYXJuaW5nVG9waWNzIiwidG9waWNzIiwibWFwIiwiZWwiLCJ0aXRsZSIsImRlc2NyaXB0aW9uIiwiX2MiLCIkUmVmcmVzaFJlZyQiXSwiaWdub3JlTGlzdCI6W10sInNvdXJjZXMiOlsiTGVhcm5pbmdzLmpzeCJdLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgeyB1c2VTdGF0ZSB9IGZyb20gXCJyZWFjdFwiO1xyXG5cclxuaW1wb3J0IFRhYkJ1dHRvbiBmcm9tIFwiLi9UYWJCdXR0b24uanN4XCI7XHJcbmltcG9ydCBTZWN0aW9uIGZyb20gXCIuL1NlY3Rpb24uanN4XCI7XHJcbmltcG9ydCBUYWJzIGZyb20gXCIuL1RhYnMuanN4XCI7XHJcbmltcG9ydCB7IFJFQUNUX0xFQVJOSU5HX1RBQlMgfSBmcm9tIFwiLi4vZGF0YVwiO1xyXG5pbXBvcnQgQ29yZUNvbmNlcHQgZnJvbSBcIi4vQ29yZUNvbmNlcHQuanN4XCI7XHJcbmltcG9ydCB7XHJcbiAgRGlBcHBsZSxcclxuICBEaUFuZHJvaWQsXHJcbiAgRGlBcHBjZWxlcmF0b3IsXHJcbiAgRGlBc3RlcmlzayxcclxuICBEaUF3cyxcclxufSBmcm9tIFwicmVhY3QtaWNvbnMvZGlcIjtcclxuXHJcbmV4cG9ydCBkZWZhdWx0IGZ1bmN0aW9uIExlYXJuaW5ncygpIHtcclxuICBjb25zdCBbc2VsZWN0ZWRMZWFybmluZywgc2V0U2VsZWN0ZWRMZWFybmluZ10gPSB1c2VTdGF0ZSgpO1xyXG4gIGZ1bmN0aW9uIGdlbmVyYXRlSWNvbihjb250ZW50SWQpIHtcclxuICAgIGlmIChjb250ZW50SWQgPT09IFwiYmFzaWNzXCIpIHtcclxuICAgICAgcmV0dXJuIDxEaUFwcGxlIC8+O1xyXG4gICAgfSBlbHNlIGlmIChjb250ZW50SWQgPT09IFwiaW50ZXJtZWRpYXRlXCIpIHtcclxuICAgICAgcmV0dXJuIDxEaUFuZHJvaWQgLz47XHJcbiAgICB9IGVsc2UgaWYgKGNvbnRlbnRJZCA9PT0gXCJhZHZhbmNlZFwiKSB7XHJcbiAgICAgIHJldHVybiA8RGlBc3RlcmlzayAvPjtcclxuICAgIH0gZWxzZSBpZiAoY29udGVudElkID09PSBcImVjb3N5c3RlbVwiKSB7XHJcbiAgICAgIHJldHVybiA8RGlBcHBjZWxlcmF0b3IgLz47XHJcbiAgICB9XHJcbiAgfVxyXG5cclxuICBmdW5jdGlvbiBoYW5kbGVTZWxlY3Qoc2VsZWN0ZWRCdXR0b24pIHtcclxuICAgIC8vIHNlbGVjdGVkQnV0dG9uID0+ICdjb21wb25lbnRzJywgJ2pzeCcsICdwcm9wcycsICdzdGF0ZSdcclxuICAgIHNldFNlbGVjdGVkTGVhcm5pbmcoc2VsZWN0ZWRCdXR0b24pO1xyXG4gICAgLy8gY29uc29sZS5sb2coc2VsZWN0ZWRUb3BpYyk7XHJcbiAgICBjb25zb2xlLmxvZyhzZWxlY3RlZExlYXJuaW5nKTtcclxuICB9XHJcblxyXG4gIGxldCB0YWJDb250ZW50ID0gPHA+UGxlYXNlIHNlbGVjdCBhIHRvcGljLjwvcD47XHJcblxyXG4gIGlmIChzZWxlY3RlZExlYXJuaW5nKSB7XHJcbiAgICBjb25zdCBbbWF0Y2hPYmpdID0gUkVBQ1RfTEVBUk5JTkdfVEFCUy5maWx0ZXIoXHJcbiAgICAgIChjb250ZW50KSA9PiBjb250ZW50LmlkID09PSBzZWxlY3RlZExlYXJuaW5nXHJcbiAgICApO1xyXG4gICAgY29uc29sZS5sb2cobWF0Y2hPYmopO1xyXG5cclxuICAgIGNvbnN0IGxlYXJuaW5nVG9waWNzID0gbWF0Y2hPYmouY29udGVudC50b3BpY3MubWFwKChlbCkgPT4gKFxyXG4gICAgICA8bGkga2V5PXtlbC5pZH0+XHJcbiAgICAgICAgPGg0PntlbD8udGl0bGV9PC9oND5cclxuICAgICAgICB7Lyoge2VsPy5pY29ufSAqL31cclxuICAgICAgPC9saT5cclxuICAgICkpO1xyXG4gICAgdGFiQ29udGVudCA9IChcclxuICAgICAgPD5cclxuICAgICAgICA8ZGl2IGtleT17bWF0Y2hPYmouaWR9IGlkPVwidGFiLWNvbnRlbnRcIj5cclxuICAgICAgICAgIHtnZW5lcmF0ZUljb24oc2VsZWN0ZWRMZWFybmluZyl9XHJcbiAgICAgICAgICA8aDM+e21hdGNoT2JqPy5jb250ZW50Py50aXRsZX08L2gzPlxyXG4gICAgICAgICAgPHA+e21hdGNoT2JqPy5jb250ZW50Py5kZXNjcmlwdGlvbn08L3A+XHJcbiAgICAgICAgPC9kaXY+XHJcbiAgICAgICAgPGRpdiBrZXk9e2Ake21hdGNoT2JqLmlkfS10b3BpY3NgfSBpZD17YCR7bWF0Y2hPYmouaWR9LXRvcGljYH0+XHJcbiAgICAgICAgICA8dWw+e2xlYXJuaW5nVG9waWNzfTwvdWw+XHJcbiAgICAgICAgPC9kaXY+XHJcbiAgICAgIDwvPlxyXG4gICAgKTtcclxuICB9XHJcblxyXG4gIHJldHVybiAoXHJcbiAgICA8U2VjdGlvbiB0aXRsZT1cIkxlYXJuaW5ncyBNYXAgYW5kIEVjb1N5c3RlbVwiIGlkPVwiZXhhbXBsZXNcIj5cclxuICAgICAgPFRhYnNcclxuICAgICAgICBidXR0b25zPXtcclxuICAgICAgICAgIDw+XHJcbiAgICAgICAgICAgIDxUYWJCdXR0b25cclxuICAgICAgICAgICAgICBpc1NlbGVjdGVkPXtzZWxlY3RlZExlYXJuaW5nID09PSBcImJhc2ljc1wifVxyXG4gICAgICAgICAgICAgIG9uQ2xpY2s9eygpID0+IGhhbmRsZVNlbGVjdChcImJhc2ljc1wiKX1cclxuICAgICAgICAgICAgICBrZXk9XCJiYXNpY3NcIlxyXG4gICAgICAgICAgICA+XHJcbiAgICAgICAgICAgICAgQmFzaWNzXHJcbiAgICAgICAgICAgIDwvVGFiQnV0dG9uPlxyXG4gICAgICAgICAgICA8VGFiQnV0dG9uXHJcbiAgICAgICAgICAgICAgaXNTZWxlY3RlZD17c2VsZWN0ZWRMZWFybmluZyA9PT0gXCJpbnRlcm1lZGlhdGVcIn1cclxuICAgICAgICAgICAgICBvbkNsaWNrPXsoKSA9PiBoYW5kbGVTZWxlY3QoXCJpbnRlcm1lZGlhdGVcIil9XHJcbiAgICAgICAgICAgICAga2V5PVwiaW50ZXJtZWRpYXRlXCJcclxuICAgICAgICAgICAgPlxyXG4gICAgICAgICAgICAgIEludGVybWVkaWF0ZVxyXG4gICAgICAgICAgICA8L1RhYkJ1dHRvbj5cclxuICAgICAgICAgICAgPFRhYkJ1dHRvblxyXG4gICAgICAgICAgICAgIGlzU2VsZWN0ZWQ9e3NlbGVjdGVkTGVhcm5pbmcgPT09IFwiYWR2YW5jZWRcIn1cclxuICAgICAgICAgICAgICBvbkNsaWNrPXsoKSA9PiBoYW5kbGVTZWxlY3QoXCJhZHZhbmNlZFwiKX1cclxuICAgICAgICAgICAgICBrZXk9XCJhZHZhbmNlZFwiXHJcbiAgICAgICAgICAgID5cclxuICAgICAgICAgICAgICBBZHZhbmNlZFxyXG4gICAgICAgICAgICA8L1RhYkJ1dHRvbj5cclxuICAgICAgICAgICAgPFRhYkJ1dHRvblxyXG4gICAgICAgICAgICAgIGlzU2VsZWN0ZWQ9e3NlbGVjdGVkTGVhcm5pbmcgPT09IFwiZWNvc3lzdGVtXCJ9XHJcbiAgICAgICAgICAgICAgb25DbGljaz17KCkgPT4gaGFuZGxlU2VsZWN0KFwiZWNvc3lzdGVtXCIpfVxyXG4gICAgICAgICAgICAgIGtleT1cImVjb3N5c3RlbVwiXHJcbiAgICAgICAgICAgID5cclxuICAgICAgICAgICAgICBFY29zeXN0ZW1cclxuICAgICAgICAgICAgPC9UYWJCdXR0b24+XHJcbiAgICAgICAgICA8Lz5cclxuICAgICAgICB9XHJcbiAgICAgID5cclxuICAgICAgICB7dGFiQ29udGVudH1cclxuICAgICAgPC9UYWJzPlxyXG4gICAgPC9TZWN0aW9uPlxyXG4gICk7XHJcbn1cclxuIl0sImZpbGUiOiJDOi9Vc2Vycy9zaHVucC9PbmVEcml2ZS/jg4fjgrnjgq/jg4jjg4Pjg5cvRnJhbWVXb3Jrcy9yZWFjdF9uZXh0anNfcHJhYy9keW5hbWljLWNvbXBvbmVudC10eXBlcy9zcmMvY29tcG9uZW50cy9MZWFybmluZ3MuanN4In0=

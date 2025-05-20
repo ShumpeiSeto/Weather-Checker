@@ -1,0 +1,867 @@
+import { createHotContext as __vite__createHotContext } from "/@vite/client";import.meta.hot = __vite__createHotContext("/src/components/TodayTommorrow.jsx");import __vite__cjsImport0_react_jsxDevRuntime from "/node_modules/.vite/deps/react_jsx-dev-runtime.js?v=92ce8794"; const Fragment = __vite__cjsImport0_react_jsxDevRuntime["Fragment"]; const jsxDEV = __vite__cjsImport0_react_jsxDevRuntime["jsxDEV"];
+import RefreshRuntime from "/@react-refresh";
+const inWebWorker = typeof WorkerGlobalScope !== "undefined" && self instanceof WorkerGlobalScope;
+let prevRefreshReg;
+let prevRefreshSig;
+if (import.meta.hot && !inWebWorker) {
+  if (!window.__vite_plugin_react_preamble_installed__) {
+    throw new Error("@vitejs/plugin-react can't detect preamble. Something is wrong. See https://github.com/vitejs/vite-plugin-react/pull/11#discussion_r430879201");
+  }
+  prevRefreshReg = window.$RefreshReg$;
+  prevRefreshSig = window.$RefreshSig$;
+  window.$RefreshReg$ = (type, id) => {
+    RefreshRuntime.register(type, "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/TodayTommorrow.jsx " + id);
+  };
+  window.$RefreshSig$ = RefreshRuntime.createSignatureFunctionForTransform;
+}
+import rainyIcon from "/src/assets/rainy.png?import";
+import uviIcon from "/src/assets/uvi.png?import";
+import "/src/components/TodayTommorrow.css?t=1747705349049";
+export default function TodayTommorrow({
+  ttData,
+  todaysData,
+  viewFlg,
+  hourlyData,
+  convertJapanWeth
+}) {
+  const todayData = hourlyData.slice(0, 24 - (/* @__PURE__ */ new Date()).getHours());
+  const tommorrowData = hourlyData.slice(24 - (/* @__PURE__ */ new Date()).getHours(), 24);
+  console.log(ttData);
+  const today = ttData.today;
+  console.log(today);
+  const tommorrow = ttData.tommorrow;
+  const days = ["日", "月", "火", "水", "木", "金", "土"];
+  function getUVLevel(uvi) {
+    if (uvi >= 11) return "超危険";
+    if (uvi >= 8) return "危険";
+    if (uvi >= 6) return "強";
+    if (uvi >= 3) return "中";
+    return "弱";
+  }
+  return /* @__PURE__ */ jsxDEV(Fragment, { children: [
+    viewFlg === 1 && /* @__PURE__ */ jsxDEV(Fragment, { children: /* @__PURE__ */ jsxDEV("div", { className: "weather-container", children: [
+      /* @__PURE__ */ jsxDEV("div", { className: "weather-card", children: [
+        /* @__PURE__ */ jsxDEV("div", { className: "weather-tt-header", children: /* @__PURE__ */ jsxDEV("h3", { children: [
+          "今日の天気(",
+          today.date,
+          ")"
+        ] }, void 0, true, {
+          fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/TodayTommorrow.jsx",
+          lineNumber: 33,
+          columnNumber: 17
+        }, this) }, void 0, false, {
+          fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/TodayTommorrow.jsx",
+          lineNumber: 32,
+          columnNumber: 15
+        }, this),
+        /* @__PURE__ */ jsxDEV("p", { className: today.weather.toLowerCase(), children: convertJapanWeth(today.weather) }, void 0, false, {
+          fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/TodayTommorrow.jsx",
+          lineNumber: 35,
+          columnNumber: 15
+        }, this),
+        /* @__PURE__ */ jsxDEV("div", { className: "weather-icon-section", children: [
+          /* @__PURE__ */ jsxDEV("div", { className: "weather-icon", children: /* @__PURE__ */ jsxDEV("img", { src: today.icon, alt: "本日の予報アイコン" }, void 0, false, {
+            fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/TodayTommorrow.jsx",
+            lineNumber: 42,
+            columnNumber: 19
+          }, this) }, void 0, false, {
+            fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/TodayTommorrow.jsx",
+            lineNumber: 40,
+            columnNumber: 17
+          }, this),
+          /* @__PURE__ */ jsxDEV("div", { className: "weather-description", children: /* @__PURE__ */ jsxDEV("div", { className: "temperature", children: [
+            /* @__PURE__ */ jsxDEV("p", { className: "high-temp", children: [
+              "最高 ",
+              /* @__PURE__ */ jsxDEV("span", { children: `${today.maxTemp.toFixed(1)}℃` }, void 0, false, {
+                fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/TodayTommorrow.jsx",
+                lineNumber: 47,
+                columnNumber: 26
+              }, this),
+              " ",
+              /* @__PURE__ */ jsxDEV("small", {}, void 0, false, {
+                fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/TodayTommorrow.jsx",
+                lineNumber: 48,
+                columnNumber: 23
+              }, this)
+            ] }, void 0, true, {
+              fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/TodayTommorrow.jsx",
+              lineNumber: 46,
+              columnNumber: 21
+            }, this),
+            /* @__PURE__ */ jsxDEV("p", { className: "low-temp", children: [
+              "最低 ",
+              /* @__PURE__ */ jsxDEV("span", { children: `${today.minTemp.toFixed(1)}℃` }, void 0, false, {
+                fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/TodayTommorrow.jsx",
+                lineNumber: 51,
+                columnNumber: 26
+              }, this),
+              " ",
+              /* @__PURE__ */ jsxDEV("small", {}, void 0, false, {
+                fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/TodayTommorrow.jsx",
+                lineNumber: 52,
+                columnNumber: 23
+              }, this)
+            ] }, void 0, true, {
+              fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/TodayTommorrow.jsx",
+              lineNumber: 50,
+              columnNumber: 21
+            }, this)
+          ] }, void 0, true, {
+            fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/TodayTommorrow.jsx",
+            lineNumber: 45,
+            columnNumber: 19
+          }, this) }, void 0, false, {
+            fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/TodayTommorrow.jsx",
+            lineNumber: 44,
+            columnNumber: 17
+          }, this)
+        ] }, void 0, true, {
+          fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/TodayTommorrow.jsx",
+          lineNumber: 39,
+          columnNumber: 15
+        }, this),
+        /* @__PURE__ */ jsxDEV("table", { className: "precipitation-table", children: [
+          /* @__PURE__ */ jsxDEV("thead", { children: /* @__PURE__ */ jsxDEV("tr", { children: [
+            /* @__PURE__ */ jsxDEV("th", { scope: "col", children: "時間" }, void 0, false, {
+              fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/TodayTommorrow.jsx",
+              lineNumber: 61,
+              columnNumber: 21
+            }, this),
+            /* @__PURE__ */ jsxDEV("th", { scope: "col", children: "午前" }, void 0, false, {
+              fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/TodayTommorrow.jsx",
+              lineNumber: 62,
+              columnNumber: 21
+            }, this),
+            /* @__PURE__ */ jsxDEV("th", { scope: "col", children: "午後" }, void 0, false, {
+              fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/TodayTommorrow.jsx",
+              lineNumber: 63,
+              columnNumber: 21
+            }, this)
+          ] }, void 0, true, {
+            fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/TodayTommorrow.jsx",
+            lineNumber: 60,
+            columnNumber: 19
+          }, this) }, void 0, false, {
+            fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/TodayTommorrow.jsx",
+            lineNumber: 59,
+            columnNumber: 17
+          }, this),
+          /* @__PURE__ */ jsxDEV("tbody", { children: /* @__PURE__ */ jsxDEV("tr", { children: [
+            /* @__PURE__ */ jsxDEV("td", { className: "label", children: /* @__PURE__ */ jsxDEV(
+              "img",
+              {
+                className: "rainyimg",
+                src: rainyIcon,
+                alt: "降水確率"
+              },
+              void 0,
+              false,
+              {
+                fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/TodayTommorrow.jsx",
+                lineNumber: 69,
+                columnNumber: 23
+              },
+              this
+            ) }, void 0, false, {
+              fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/TodayTommorrow.jsx",
+              lineNumber: 68,
+              columnNumber: 21
+            }, this),
+            /* @__PURE__ */ jsxDEV("td", { children: [
+              today.popAM1 === "-" ? "-" : (today.popAM1 * 100).toFixed(0),
+              "%"
+            ] }, void 0, true, {
+              fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/TodayTommorrow.jsx",
+              lineNumber: 75,
+              columnNumber: 21
+            }, this),
+            /* @__PURE__ */ jsxDEV("td", { children: [
+              (today.popPM1 * 100).toFixed(0),
+              "%"
+            ] }, void 0, true, {
+              fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/TodayTommorrow.jsx",
+              lineNumber: 81,
+              columnNumber: 21
+            }, this)
+          ] }, void 0, true, {
+            fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/TodayTommorrow.jsx",
+            lineNumber: 67,
+            columnNumber: 19
+          }, this) }, void 0, false, {
+            fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/TodayTommorrow.jsx",
+            lineNumber: 66,
+            columnNumber: 17
+          }, this)
+        ] }, void 0, true, {
+          fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/TodayTommorrow.jsx",
+          lineNumber: 58,
+          columnNumber: 15
+        }, this)
+      ] }, void 0, true, {
+        fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/TodayTommorrow.jsx",
+        lineNumber: 31,
+        columnNumber: 13
+      }, this),
+      /* @__PURE__ */ jsxDEV("div", { className: "weather-card", children: [
+        /* @__PURE__ */ jsxDEV("div", { className: "weather-tt-header", children: /* @__PURE__ */ jsxDEV("h3", { children: [
+          "明日の天気(",
+          tommorrow.date,
+          ")"
+        ] }, void 0, true, {
+          fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/TodayTommorrow.jsx",
+          lineNumber: 89,
+          columnNumber: 17
+        }, this) }, void 0, false, {
+          fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/TodayTommorrow.jsx",
+          lineNumber: 88,
+          columnNumber: 15
+        }, this),
+        /* @__PURE__ */ jsxDEV("div", { className: "weather-icon-section", children: [
+          /* @__PURE__ */ jsxDEV("p", { className: tommorrow.weather.toLowerCase(), children: convertJapanWeth(tommorrow.weather) }, void 0, false, {
+            fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/TodayTommorrow.jsx",
+            lineNumber: 93,
+            columnNumber: 17
+          }, this),
+          /* @__PURE__ */ jsxDEV("div", { className: "weather-icon", children: /* @__PURE__ */ jsxDEV("img", { src: tommorrow.icon, alt: "明日の予報アイコン" }, void 0, false, {
+            fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/TodayTommorrow.jsx",
+            lineNumber: 98,
+            columnNumber: 19
+          }, this) }, void 0, false, {
+            fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/TodayTommorrow.jsx",
+            lineNumber: 96,
+            columnNumber: 17
+          }, this),
+          /* @__PURE__ */ jsxDEV("div", { className: "weather-description", children: /* @__PURE__ */ jsxDEV("div", { className: "temperature", children: [
+            /* @__PURE__ */ jsxDEV("p", { className: "high-temp", children: [
+              "最高 ",
+              /* @__PURE__ */ jsxDEV("span", { children: `${tommorrow.maxTemp.toFixed(1)}℃` }, void 0, false, {
+                fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/TodayTommorrow.jsx",
+                lineNumber: 103,
+                columnNumber: 26
+              }, this),
+              " ",
+              /* @__PURE__ */ jsxDEV("small", {}, void 0, false, {
+                fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/TodayTommorrow.jsx",
+                lineNumber: 104,
+                columnNumber: 23
+              }, this)
+            ] }, void 0, true, {
+              fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/TodayTommorrow.jsx",
+              lineNumber: 102,
+              columnNumber: 21
+            }, this),
+            /* @__PURE__ */ jsxDEV("p", { className: "low-temp", children: [
+              "最低 ",
+              /* @__PURE__ */ jsxDEV("span", { children: `${tommorrow.minTemp.toFixed(1)}℃` }, void 0, false, {
+                fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/TodayTommorrow.jsx",
+                lineNumber: 107,
+                columnNumber: 26
+              }, this),
+              " ",
+              /* @__PURE__ */ jsxDEV("small", {}, void 0, false, {
+                fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/TodayTommorrow.jsx",
+                lineNumber: 108,
+                columnNumber: 23
+              }, this)
+            ] }, void 0, true, {
+              fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/TodayTommorrow.jsx",
+              lineNumber: 106,
+              columnNumber: 21
+            }, this)
+          ] }, void 0, true, {
+            fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/TodayTommorrow.jsx",
+            lineNumber: 101,
+            columnNumber: 19
+          }, this) }, void 0, false, {
+            fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/TodayTommorrow.jsx",
+            lineNumber: 100,
+            columnNumber: 17
+          }, this)
+        ] }, void 0, true, {
+          fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/TodayTommorrow.jsx",
+          lineNumber: 92,
+          columnNumber: 15
+        }, this),
+        /* @__PURE__ */ jsxDEV("table", { className: "precipitation-table", children: [
+          /* @__PURE__ */ jsxDEV("thead", { children: /* @__PURE__ */ jsxDEV("tr", { children: [
+            /* @__PURE__ */ jsxDEV("th", { scope: "col", children: "時間" }, void 0, false, {
+              fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/TodayTommorrow.jsx",
+              lineNumber: 117,
+              columnNumber: 21
+            }, this),
+            /* @__PURE__ */ jsxDEV("th", { scope: "col", children: "午前" }, void 0, false, {
+              fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/TodayTommorrow.jsx",
+              lineNumber: 118,
+              columnNumber: 21
+            }, this),
+            /* @__PURE__ */ jsxDEV("th", { scope: "col", children: "午後" }, void 0, false, {
+              fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/TodayTommorrow.jsx",
+              lineNumber: 119,
+              columnNumber: 21
+            }, this)
+          ] }, void 0, true, {
+            fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/TodayTommorrow.jsx",
+            lineNumber: 116,
+            columnNumber: 19
+          }, this) }, void 0, false, {
+            fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/TodayTommorrow.jsx",
+            lineNumber: 115,
+            columnNumber: 17
+          }, this),
+          /* @__PURE__ */ jsxDEV("tbody", { children: /* @__PURE__ */ jsxDEV("tr", { children: [
+            /* @__PURE__ */ jsxDEV("td", { className: "label", children: /* @__PURE__ */ jsxDEV(
+              "img",
+              {
+                className: "rainyimg",
+                src: rainyIcon,
+                alt: "降水確率"
+              },
+              void 0,
+              false,
+              {
+                fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/TodayTommorrow.jsx",
+                lineNumber: 125,
+                columnNumber: 23
+              },
+              this
+            ) }, void 0, false, {
+              fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/TodayTommorrow.jsx",
+              lineNumber: 124,
+              columnNumber: 21
+            }, this),
+            /* @__PURE__ */ jsxDEV("td", { children: [
+              (tommorrow.popAM2 * 100).toFixed(0),
+              "%"
+            ] }, void 0, true, {
+              fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/TodayTommorrow.jsx",
+              lineNumber: 131,
+              columnNumber: 21
+            }, this),
+            /* @__PURE__ */ jsxDEV("td", { children: [
+              (tommorrow.popPM2 * 100).toFixed(0),
+              "%"
+            ] }, void 0, true, {
+              fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/TodayTommorrow.jsx",
+              lineNumber: 132,
+              columnNumber: 21
+            }, this)
+          ] }, void 0, true, {
+            fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/TodayTommorrow.jsx",
+            lineNumber: 123,
+            columnNumber: 19
+          }, this) }, void 0, false, {
+            fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/TodayTommorrow.jsx",
+            lineNumber: 122,
+            columnNumber: 17
+          }, this)
+        ] }, void 0, true, {
+          fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/TodayTommorrow.jsx",
+          lineNumber: 114,
+          columnNumber: 15
+        }, this)
+      ] }, void 0, true, {
+        fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/TodayTommorrow.jsx",
+        lineNumber: 87,
+        columnNumber: 13
+      }, this)
+    ] }, void 0, true, {
+      fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/TodayTommorrow.jsx",
+      lineNumber: 30,
+      columnNumber: 11
+    }, this) }, void 0, false, {
+      fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/TodayTommorrow.jsx",
+      lineNumber: 29,
+      columnNumber: 7
+    }, this),
+    viewFlg === 2 && /* @__PURE__ */ jsxDEV(Fragment, { children: /* @__PURE__ */ jsxDEV("div", { className: "weather-today-container", children: /* @__PURE__ */ jsxDEV("div", { className: "weather-today-card", children: [
+      /* @__PURE__ */ jsxDEV("div", { className: "weather-today-header", children: /* @__PURE__ */ jsxDEV("h3", { children: [
+        "今日の天気(",
+        today.date,
+        ")"
+      ] }, void 0, true, {
+        fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/TodayTommorrow.jsx",
+        lineNumber: 146,
+        columnNumber: 17
+      }, this) }, void 0, false, {
+        fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/TodayTommorrow.jsx",
+        lineNumber: 145,
+        columnNumber: 15
+      }, this),
+      /* @__PURE__ */ jsxDEV("p", { className: today.weather.toLowerCase(), children: convertJapanWeth(today.weather) }, void 0, false, {
+        fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/TodayTommorrow.jsx",
+        lineNumber: 148,
+        columnNumber: 15
+      }, this),
+      /* @__PURE__ */ jsxDEV("div", { className: "weather-today-icon-section", children: [
+        /* @__PURE__ */ jsxDEV("div", { className: "weather-today-icon", children: /* @__PURE__ */ jsxDEV("img", { src: today.icon, alt: "本日の予報アイコン" }, void 0, false, {
+          fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/TodayTommorrow.jsx",
+          lineNumber: 155,
+          columnNumber: 19
+        }, this) }, void 0, false, {
+          fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/TodayTommorrow.jsx",
+          lineNumber: 153,
+          columnNumber: 17
+        }, this),
+        /* @__PURE__ */ jsxDEV("div", { className: "weather-today-description", children: /* @__PURE__ */ jsxDEV("div", { className: "today-temperature", children: [
+          /* @__PURE__ */ jsxDEV("p", { className: "today-high-temp", children: [
+            "最高 ",
+            /* @__PURE__ */ jsxDEV("span", { children: `${today.maxTemp.toFixed(1)}℃` }, void 0, false, {
+              fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/TodayTommorrow.jsx",
+              lineNumber: 160,
+              columnNumber: 26
+            }, this),
+            " ",
+            /* @__PURE__ */ jsxDEV("small", {}, void 0, false, {
+              fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/TodayTommorrow.jsx",
+              lineNumber: 161,
+              columnNumber: 23
+            }, this)
+          ] }, void 0, true, {
+            fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/TodayTommorrow.jsx",
+            lineNumber: 159,
+            columnNumber: 21
+          }, this),
+          /* @__PURE__ */ jsxDEV("p", { className: "today-low-temp", children: [
+            "最低 ",
+            /* @__PURE__ */ jsxDEV("span", { children: `${today.minTemp.toFixed(1)}℃` }, void 0, false, {
+              fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/TodayTommorrow.jsx",
+              lineNumber: 164,
+              columnNumber: 26
+            }, this),
+            " ",
+            /* @__PURE__ */ jsxDEV("small", {}, void 0, false, {
+              fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/TodayTommorrow.jsx",
+              lineNumber: 165,
+              columnNumber: 23
+            }, this)
+          ] }, void 0, true, {
+            fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/TodayTommorrow.jsx",
+            lineNumber: 163,
+            columnNumber: 21
+          }, this)
+        ] }, void 0, true, {
+          fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/TodayTommorrow.jsx",
+          lineNumber: 158,
+          columnNumber: 19
+        }, this) }, void 0, false, {
+          fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/TodayTommorrow.jsx",
+          lineNumber: 157,
+          columnNumber: 17
+        }, this)
+      ] }, void 0, true, {
+        fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/TodayTommorrow.jsx",
+        lineNumber: 152,
+        columnNumber: 15
+      }, this),
+      /* @__PURE__ */ jsxDEV("table", { className: "today-precipitation-table", children: [
+        /* @__PURE__ */ jsxDEV("thead", { children: /* @__PURE__ */ jsxDEV("tr", { children: [
+          /* @__PURE__ */ jsxDEV("th", { scope: "col", children: "時間" }, void 0, false, {
+            fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/TodayTommorrow.jsx",
+            lineNumber: 174,
+            columnNumber: 21
+          }, this),
+          /* @__PURE__ */ jsxDEV("th", { scope: "col", children: "0-6" }, void 0, false, {
+            fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/TodayTommorrow.jsx",
+            lineNumber: 175,
+            columnNumber: 21
+          }, this),
+          /* @__PURE__ */ jsxDEV("th", { scope: "col", children: "6-12" }, void 0, false, {
+            fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/TodayTommorrow.jsx",
+            lineNumber: 176,
+            columnNumber: 21
+          }, this),
+          /* @__PURE__ */ jsxDEV("th", { scope: "col", children: "12-18" }, void 0, false, {
+            fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/TodayTommorrow.jsx",
+            lineNumber: 177,
+            columnNumber: 21
+          }, this),
+          /* @__PURE__ */ jsxDEV("th", { scope: "col", children: "18-24" }, void 0, false, {
+            fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/TodayTommorrow.jsx",
+            lineNumber: 178,
+            columnNumber: 21
+          }, this)
+        ] }, void 0, true, {
+          fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/TodayTommorrow.jsx",
+          lineNumber: 173,
+          columnNumber: 19
+        }, this) }, void 0, false, {
+          fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/TodayTommorrow.jsx",
+          lineNumber: 172,
+          columnNumber: 17
+        }, this),
+        /* @__PURE__ */ jsxDEV("tbody", { children: [
+          /* @__PURE__ */ jsxDEV("tr", { children: [
+            /* @__PURE__ */ jsxDEV("td", { className: "label", children: /* @__PURE__ */ jsxDEV(
+              "img",
+              {
+                className: "rainyimg",
+                src: rainyIcon,
+                alt: "降水確率"
+              },
+              void 0,
+              false,
+              {
+                fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/TodayTommorrow.jsx",
+                lineNumber: 184,
+                columnNumber: 23
+              },
+              this
+            ) }, void 0, false, {
+              fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/TodayTommorrow.jsx",
+              lineNumber: 183,
+              columnNumber: 21
+            }, this),
+            /* @__PURE__ */ jsxDEV("td", { children: [
+              todaysData.AM1pop === "-" ? "-" : (todaysData.AM1pop * 100).toFixed(0),
+              "%"
+            ] }, void 0, true, {
+              fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/TodayTommorrow.jsx",
+              lineNumber: 191,
+              columnNumber: 21
+            }, this),
+            /* @__PURE__ */ jsxDEV("td", { children: [
+              todaysData.AM2pop === "-" ? "-" : (todaysData.AM2pop * 100).toFixed(0),
+              "%"
+            ] }, void 0, true, {
+              fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/TodayTommorrow.jsx",
+              lineNumber: 197,
+              columnNumber: 21
+            }, this),
+            /* @__PURE__ */ jsxDEV("td", { children: [
+              todaysData.PM1pop === "-" ? "-" : (todaysData.PM1pop * 100).toFixed(0),
+              "%"
+            ] }, void 0, true, {
+              fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/TodayTommorrow.jsx",
+              lineNumber: 203,
+              columnNumber: 21
+            }, this),
+            /* @__PURE__ */ jsxDEV("td", { children: [
+              todaysData.PM2pop === "-" ? "-" : (todaysData.PM2pop * 100).toFixed(0),
+              "%"
+            ] }, void 0, true, {
+              fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/TodayTommorrow.jsx",
+              lineNumber: 209,
+              columnNumber: 21
+            }, this)
+          ] }, void 0, true, {
+            fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/TodayTommorrow.jsx",
+            lineNumber: 182,
+            columnNumber: 19
+          }, this),
+          /* @__PURE__ */ jsxDEV("tr", { children: [
+            /* @__PURE__ */ jsxDEV("td", { className: "label", children: /* @__PURE__ */ jsxDEV("img", { className: "uviImg", src: uviIcon, alt: "紫外線指数" }, void 0, false, {
+              fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/TodayTommorrow.jsx",
+              lineNumber: 218,
+              columnNumber: 23
+            }, this) }, void 0, false, {
+              fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/TodayTommorrow.jsx",
+              lineNumber: 217,
+              columnNumber: 21
+            }, this),
+            /* @__PURE__ */ jsxDEV("td", { children: todaysData.AM1uvi === "-" ? "-" : getUVLevel(todaysData.AM1uvi.toFixed(1)) }, void 0, false, {
+              fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/TodayTommorrow.jsx",
+              lineNumber: 220,
+              columnNumber: 21
+            }, this),
+            /* @__PURE__ */ jsxDEV("td", { children: todaysData.AM2uvi === "-" ? "-" : getUVLevel(todaysData.AM2uvi.toFixed(1)) }, void 0, false, {
+              fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/TodayTommorrow.jsx",
+              lineNumber: 225,
+              columnNumber: 21
+            }, this),
+            /* @__PURE__ */ jsxDEV("td", { children: todaysData.PM1uvi === "-" ? "-" : getUVLevel(todaysData.PM1uvi.toFixed(1)) }, void 0, false, {
+              fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/TodayTommorrow.jsx",
+              lineNumber: 230,
+              columnNumber: 21
+            }, this),
+            /* @__PURE__ */ jsxDEV("td", { children: todaysData.PM1uvi === "-" ? "-" : getUVLevel(todaysData.PM1uvi.toFixed(1)) }, void 0, false, {
+              fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/TodayTommorrow.jsx",
+              lineNumber: 235,
+              columnNumber: 21
+            }, this)
+          ] }, void 0, true, {
+            fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/TodayTommorrow.jsx",
+            lineNumber: 216,
+            columnNumber: 19
+          }, this)
+        ] }, void 0, true, {
+          fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/TodayTommorrow.jsx",
+          lineNumber: 181,
+          columnNumber: 17
+        }, this)
+      ] }, void 0, true, {
+        fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/TodayTommorrow.jsx",
+        lineNumber: 171,
+        columnNumber: 15
+      }, this)
+    ] }, void 0, true, {
+      fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/TodayTommorrow.jsx",
+      lineNumber: 144,
+      columnNumber: 13
+    }, this) }, void 0, false, {
+      fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/TodayTommorrow.jsx",
+      lineNumber: 143,
+      columnNumber: 11
+    }, this) }, void 0, false, {
+      fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/TodayTommorrow.jsx",
+      lineNumber: 142,
+      columnNumber: 7
+    }, this),
+    viewFlg === 2 && /* @__PURE__ */ jsxDEV(Fragment, { children: /* @__PURE__ */ jsxDEV("div", { className: "daily_table", children: [
+      /* @__PURE__ */ jsxDEV("ul", { children: [
+        /* @__PURE__ */ jsxDEV("li", { className: "tt-date", children: /* @__PURE__ */ jsxDEV("p", { children: "日" }, void 0, false, {
+          fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/TodayTommorrow.jsx",
+          lineNumber: 253,
+          columnNumber: 17
+        }, this) }, void 0, false, {
+          fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/TodayTommorrow.jsx",
+          lineNumber: 252,
+          columnNumber: 15
+        }, this),
+        /* @__PURE__ */ jsxDEV("li", { className: "time", children: /* @__PURE__ */ jsxDEV("p", { children: "時" }, void 0, false, {
+          fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/TodayTommorrow.jsx",
+          lineNumber: 256,
+          columnNumber: 17
+        }, this) }, void 0, false, {
+          fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/TodayTommorrow.jsx",
+          lineNumber: 255,
+          columnNumber: 15
+        }, this),
+        /* @__PURE__ */ jsxDEV("li", { className: "weather", children: /* @__PURE__ */ jsxDEV("p", { children: "天気" }, void 0, false, {
+          fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/TodayTommorrow.jsx",
+          lineNumber: 259,
+          columnNumber: 17
+        }, this) }, void 0, false, {
+          fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/TodayTommorrow.jsx",
+          lineNumber: 258,
+          columnNumber: 15
+        }, this),
+        /* @__PURE__ */ jsxDEV("li", { className: "pop", children: /* @__PURE__ */ jsxDEV("p", { children: "降水" }, void 0, false, {
+          fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/TodayTommorrow.jsx",
+          lineNumber: 262,
+          columnNumber: 17
+        }, this) }, void 0, false, {
+          fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/TodayTommorrow.jsx",
+          lineNumber: 261,
+          columnNumber: 15
+        }, this),
+        /* @__PURE__ */ jsxDEV("li", { className: "temp", children: /* @__PURE__ */ jsxDEV("p", { children: "気温" }, void 0, false, {
+          fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/TodayTommorrow.jsx",
+          lineNumber: 265,
+          columnNumber: 17
+        }, this) }, void 0, false, {
+          fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/TodayTommorrow.jsx",
+          lineNumber: 264,
+          columnNumber: 15
+        }, this),
+        /* @__PURE__ */ jsxDEV("li", { className: "wind", children: /* @__PURE__ */ jsxDEV("p", { children: "風" }, void 0, false, {
+          fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/TodayTommorrow.jsx",
+          lineNumber: 268,
+          columnNumber: 17
+        }, this) }, void 0, false, {
+          fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/TodayTommorrow.jsx",
+          lineNumber: 267,
+          columnNumber: 15
+        }, this)
+      ] }, void 0, true, {
+        fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/TodayTommorrow.jsx",
+        lineNumber: 251,
+        columnNumber: 13
+      }, this),
+      /* @__PURE__ */ jsxDEV("div", { className: "hourly_infos", children: [
+        /* @__PURE__ */ jsxDEV("div", { className: "hourly_content", children: [
+          /* @__PURE__ */ jsxDEV("div", { className: "day_header", children: /* @__PURE__ */ jsxDEV("div", { className: "today_date", children: /* @__PURE__ */ jsxDEV("span", { children: `${new Date(hourlyData[0].dt * 1e3).getMonth() + 1}/${new Date(hourlyData[0].dt * 1e3).getDate()}(${days[new Date(hourlyData[0].dt * 1e3).getDay()]})` }, void 0, false, {
+            fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/TodayTommorrow.jsx",
+            lineNumber: 275,
+            columnNumber: 21
+          }, this) }, void 0, false, {
+            fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/TodayTommorrow.jsx",
+            lineNumber: 274,
+            columnNumber: 19
+          }, this) }, void 0, false, {
+            fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/TodayTommorrow.jsx",
+            lineNumber: 273,
+            columnNumber: 17
+          }, this),
+          /* @__PURE__ */ jsxDEV("div", { className: "every_day", children: todayData.map(
+            (hour) => /* @__PURE__ */ jsxDEV("ul", { children: [
+              /* @__PURE__ */ jsxDEV("li", { className: "time", children: new Date(hour.dt * 1e3).getHours() }, void 0, false, {
+                fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/TodayTommorrow.jsx",
+                lineNumber: 285,
+                columnNumber: 23
+              }, this),
+              /* @__PURE__ */ jsxDEV("li", { className: "weather", children: /* @__PURE__ */ jsxDEV(
+                "img",
+                {
+                  src: `https://openweathermap.org/img/wn/${hour.weather[0].icon}@2x.png`,
+                  alt: "今日のお天気アイコン"
+                },
+                void 0,
+                false,
+                {
+                  fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/TodayTommorrow.jsx",
+                  lineNumber: 289,
+                  columnNumber: 25
+                },
+                this
+              ) }, void 0, false, {
+                fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/TodayTommorrow.jsx",
+                lineNumber: 288,
+                columnNumber: 23
+              }, this),
+              /* @__PURE__ */ jsxDEV("li", { className: "pop", children: [
+                (hour.pop * 100).toFixed(0),
+                "%"
+              ] }, void 0, true, {
+                fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/TodayTommorrow.jsx",
+                lineNumber: 295,
+                columnNumber: 23
+              }, this),
+              /* @__PURE__ */ jsxDEV("li", { className: "temp", children: [
+                (hour.temp - 273.15).toFixed(0),
+                "℃"
+              ] }, void 0, true, {
+                fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/TodayTommorrow.jsx",
+                lineNumber: 296,
+                columnNumber: 23
+              }, this),
+              /* @__PURE__ */ jsxDEV("li", { className: "wind", children: [
+                hour.wind_speed.toFixed(1),
+                "m/s"
+              ] }, void 0, true, {
+                fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/TodayTommorrow.jsx",
+                lineNumber: 299,
+                columnNumber: 23
+              }, this)
+            ] }, hour.dt, true, {
+              fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/TodayTommorrow.jsx",
+              lineNumber: 284,
+              columnNumber: 17
+            }, this)
+          ) }, void 0, false, {
+            fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/TodayTommorrow.jsx",
+            lineNumber: 282,
+            columnNumber: 17
+          }, this)
+        ] }, void 0, true, {
+          fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/TodayTommorrow.jsx",
+          lineNumber: 272,
+          columnNumber: 15
+        }, this),
+        /* @__PURE__ */ jsxDEV("div", { className: "hourly_content", children: [
+          /* @__PURE__ */ jsxDEV("div", { className: "day_header", children: /* @__PURE__ */ jsxDEV("div", { className: "today_date", children: /* @__PURE__ */ jsxDEV("span", { children: `${new Date(hourlyData[0].dt * 1e3).getMonth() + 1}/${new Date(hourlyData[0].dt * 1e3).getDate() + 1}(${days[new Date(hourlyData[0].dt * 1e3).getDay() + 1]})` }, void 0, false, {
+            fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/TodayTommorrow.jsx",
+            lineNumber: 307,
+            columnNumber: 21
+          }, this) }, void 0, false, {
+            fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/TodayTommorrow.jsx",
+            lineNumber: 306,
+            columnNumber: 19
+          }, this) }, void 0, false, {
+            fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/TodayTommorrow.jsx",
+            lineNumber: 305,
+            columnNumber: 17
+          }, this),
+          /* @__PURE__ */ jsxDEV("div", { className: "every_day", children: tommorrowData.map(
+            (hour) => /* @__PURE__ */ jsxDEV("ul", { children: [
+              /* @__PURE__ */ jsxDEV("li", { className: "time", children: new Date(hour.dt * 1e3).getHours() }, void 0, false, {
+                fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/TodayTommorrow.jsx",
+                lineNumber: 319,
+                columnNumber: 23
+              }, this),
+              /* @__PURE__ */ jsxDEV("li", { className: "weather", children: /* @__PURE__ */ jsxDEV(
+                "img",
+                {
+                  src: `https://openweathermap.org/img/wn/${hour.weather[0].icon}@2x.png`,
+                  alt: "今日のお天気アイコン"
+                },
+                void 0,
+                false,
+                {
+                  fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/TodayTommorrow.jsx",
+                  lineNumber: 323,
+                  columnNumber: 25
+                },
+                this
+              ) }, void 0, false, {
+                fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/TodayTommorrow.jsx",
+                lineNumber: 322,
+                columnNumber: 23
+              }, this),
+              /* @__PURE__ */ jsxDEV("li", { className: "pop", children: [
+                (hour.pop * 100).toFixed(0),
+                "%"
+              ] }, void 0, true, {
+                fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/TodayTommorrow.jsx",
+                lineNumber: 329,
+                columnNumber: 23
+              }, this),
+              /* @__PURE__ */ jsxDEV("li", { className: "temp", children: [
+                (hour.temp - 273.15).toFixed(0),
+                "℃"
+              ] }, void 0, true, {
+                fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/TodayTommorrow.jsx",
+                lineNumber: 330,
+                columnNumber: 23
+              }, this),
+              /* @__PURE__ */ jsxDEV("li", { className: "wind", children: [
+                hour.wind_speed.toFixed(1),
+                "m/s"
+              ] }, void 0, true, {
+                fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/TodayTommorrow.jsx",
+                lineNumber: 333,
+                columnNumber: 23
+              }, this)
+            ] }, hour.dt, true, {
+              fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/TodayTommorrow.jsx",
+              lineNumber: 318,
+              columnNumber: 17
+            }, this)
+          ) }, void 0, false, {
+            fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/TodayTommorrow.jsx",
+            lineNumber: 316,
+            columnNumber: 17
+          }, this)
+        ] }, void 0, true, {
+          fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/TodayTommorrow.jsx",
+          lineNumber: 304,
+          columnNumber: 15
+        }, this)
+      ] }, void 0, true, {
+        fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/TodayTommorrow.jsx",
+        lineNumber: 271,
+        columnNumber: 13
+      }, this)
+    ] }, void 0, true, {
+      fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/TodayTommorrow.jsx",
+      lineNumber: 250,
+      columnNumber: 11
+    }, this) }, void 0, false, {
+      fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/TodayTommorrow.jsx",
+      lineNumber: 249,
+      columnNumber: 7
+    }, this)
+  ] }, void 0, true, {
+    fileName: "C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/TodayTommorrow.jsx",
+    lineNumber: 26,
+    columnNumber: 5
+  }, this);
+}
+_c = TodayTommorrow;
+var _c;
+$RefreshReg$(_c, "TodayTommorrow");
+if (import.meta.hot && !inWebWorker) {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+if (import.meta.hot && !inWebWorker) {
+  RefreshRuntime.__hmr_import(import.meta.url).then((currentExports) => {
+    RefreshRuntime.registerExportsForReactRefresh("C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/TodayTommorrow.jsx", currentExports);
+    import.meta.hot.accept((nextExports) => {
+      if (!nextExports) return;
+      const invalidateMessage = RefreshRuntime.validateRefreshBoundaryAndEnqueueUpdate("C:/Users/shunp/OneDrive/デスクトップ/FrameWorks/react_nextjs_prac/dynamic-component-types/src/components/TodayTommorrow.jsx", currentExports, nextExports);
+      if (invalidateMessage) import.meta.hot.invalidate(invalidateMessage);
+    });
+  });
+}
+
+//# sourceMappingURL=data:application/json;base64,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QUFRa0I7QUFBQUEscUJBQUtHLFdBQVdyQixRQUFRLENBQUM7QUFBQSxnQkFBRTtBQUFBLG1CQUFqRDtBQUFBO0FBQUE7QUFBQTtBQUFBLHFCQUFvRDtBQUFBLGlCQWY3Q2tCLEtBQUtMLElBQWQ7QUFBQTtBQUFBO0FBQUE7QUFBQSxtQkFnQkE7QUFBQSxVQUNELEtBbkJIO0FBQUE7QUFBQTtBQUFBO0FBQUEsaUJBb0JBO0FBQUEsYUFoQ0Y7QUFBQTtBQUFBO0FBQUE7QUFBQSxlQWlDQTtBQUFBLFdBbEVGO0FBQUE7QUFBQTtBQUFBO0FBQUEsYUFtRUE7QUFBQSxTQXhGRjtBQUFBO0FBQUE7QUFBQTtBQUFBLFdBeUZBLEtBMUZGO0FBQUE7QUFBQTtBQUFBO0FBQUEsV0EyRkE7QUFBQSxPQTFUSjtBQUFBO0FBQUE7QUFBQTtBQUFBLFNBNFRBO0FBRUo7QUFBQ1MsS0FwVnVCN0M7QUFBYyxJQUFBNkM7QUFBQUMsYUFBQUQsSUFBQSIsIm5hbWVzIjpbInJhaW55SWNvbiIsInV2aUljb24iLCJUb2RheVRvbW1vcnJvdyIsInR0RGF0YSIsInRvZGF5c0RhdGEiLCJ2aWV3RmxnIiwiaG91cmx5RGF0YSIsImNvbnZlcnRKYXBhbldldGgiLCJ0b2RheURhdGEiLCJzbGljZSIsIkRhdGUiLCJnZXRIb3VycyIsInRvbW1vcnJvd0RhdGEiLCJjb25zb2xlIiwibG9nIiwidG9kYXkiLCJ0b21tb3Jyb3ciLCJkYXlzIiwiZ2V0VVZMZXZlbCIsInV2aSIsImRhdGUiLCJ3ZWF0aGVyIiwidG9Mb3dlckNhc2UiLCJpY29uIiwibWF4VGVtcCIsInRvRml4ZWQiLCJtaW5UZW1wIiwicG9wQU0xIiwicG9wUE0xIiwicG9wQU0yIiwicG9wUE0yIiwiQU0xcG9wIiwiQU0ycG9wIiwiUE0xcG9wIiwiUE0ycG9wIiwiQU0xdXZpIiwiQU0ydXZpIiwiUE0xdXZpIiwiZHQiLCJnZXRNb250aCIsImdldERhdGUiLCJnZXREYXkiLCJtYXAiLCJob3VyIiwicG9wIiwidGVtcCIsIndpbmRfc3BlZWQiLCJfYyIsIiRSZWZyZXNoUmVnJCJdLCJpZ25vcmVMaXN0IjpbXSwic291cmNlcyI6WyJUb2RheVRvbW1vcnJvdy5qc3giXSwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHJhaW55SWNvbiBmcm9tIFwiLi4vYXNzZXRzL3JhaW55LnBuZ1wiO1xyXG5pbXBvcnQgdXZpSWNvbiBmcm9tIFwiLi4vYXNzZXRzL3V2aS5wbmdcIjtcclxuaW1wb3J0IFwiLi9Ub2RheVRvbW1vcnJvdy5jc3NcIjtcclxuZXhwb3J0IGRlZmF1bHQgZnVuY3Rpb24gVG9kYXlUb21tb3Jyb3coe1xyXG4gIHR0RGF0YSxcclxuICB0b2RheXNEYXRhLFxyXG4gIHZpZXdGbGcsXHJcbiAgaG91cmx5RGF0YSxcclxuICBjb252ZXJ0SmFwYW5XZXRoLFxyXG59KSB7XHJcbiAgY29uc3QgdG9kYXlEYXRhID0gaG91cmx5RGF0YS5zbGljZSgwLCAyNCAtIG5ldyBEYXRlKCkuZ2V0SG91cnMoKSk7XHJcbiAgY29uc3QgdG9tbW9ycm93RGF0YSA9IGhvdXJseURhdGEuc2xpY2UoMjQgLSBuZXcgRGF0ZSgpLmdldEhvdXJzKCksIDI0KTtcclxuICBjb25zb2xlLmxvZyh0dERhdGEpO1xyXG4gIGNvbnN0IHRvZGF5ID0gdHREYXRhLnRvZGF5O1xyXG4gIGNvbnNvbGUubG9nKHRvZGF5KTtcclxuICBjb25zdCB0b21tb3Jyb3cgPSB0dERhdGEudG9tbW9ycm93O1xyXG4gIGNvbnN0IGRheXMgPSBbXCLml6VcIiwgXCLmnIhcIiwgXCLngatcIiwgXCLmsLRcIiwgXCLmnKhcIiwgXCLph5FcIiwgXCLlnJ9cIl07XHJcbiAgZnVuY3Rpb24gZ2V0VVZMZXZlbCh1dmkpIHtcclxuICAgIGlmICh1dmkgPj0gMTEpIHJldHVybiBcIui2heWNsemZulwiO1xyXG4gICAgaWYgKHV2aSA+PSA4KSByZXR1cm4gXCLljbHpmbpcIjtcclxuICAgIGlmICh1dmkgPj0gNikgcmV0dXJuIFwi5by3XCI7XHJcbiAgICBpZiAodXZpID49IDMpIHJldHVybiBcIuS4rVwiO1xyXG4gICAgcmV0dXJuIFwi5byxXCI7XHJcbiAgfVxyXG4gIHJldHVybiAoXHJcbiAgICA8PlxyXG4gICAgICB7Lyog6YCx6ZaT6KGo56S644Oi44O844OJICovfVxyXG4gICAgICB7dmlld0ZsZyA9PT0gMSAmJiAoXHJcbiAgICAgICAgPD5cclxuICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwid2VhdGhlci1jb250YWluZXJcIj5cclxuICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJ3ZWF0aGVyLWNhcmRcIj5cclxuICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cIndlYXRoZXItdHQtaGVhZGVyXCI+XHJcbiAgICAgICAgICAgICAgICA8aDM+5LuK5pel44Gu5aSp5rCXKHt0b2RheS5kYXRlfSk8L2gzPlxyXG4gICAgICAgICAgICAgIDwvZGl2PlxyXG4gICAgICAgICAgICAgIDxwIGNsYXNzTmFtZT17dG9kYXkud2VhdGhlci50b0xvd2VyQ2FzZSgpfT5cclxuICAgICAgICAgICAgICAgIHtjb252ZXJ0SmFwYW5XZXRoKHRvZGF5LndlYXRoZXIpfVxyXG4gICAgICAgICAgICAgIDwvcD5cclxuXHJcbiAgICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJ3ZWF0aGVyLWljb24tc2VjdGlvblwiPlxyXG4gICAgICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJ3ZWF0aGVyLWljb25cIj5cclxuICAgICAgICAgICAgICAgICAgey8qIOOBk+OBruWkqeawl+OCouOCpOOCs+ODs+OBr+Wkp+OBjeOCgeOBq+OBl+OBn+OBhCAqL31cclxuICAgICAgICAgICAgICAgICAgPGltZyBzcmM9e3RvZGF5Lmljb259IGFsdD1cIuacrOaXpeOBruS6iOWgseOCouOCpOOCs+ODs1wiIC8+XHJcbiAgICAgICAgICAgICAgICA8L2Rpdj5cclxuICAgICAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwid2VhdGhlci1kZXNjcmlwdGlvblwiPlxyXG4gICAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cInRlbXBlcmF0dXJlXCI+XHJcbiAgICAgICAgICAgICAgICAgICAgPHAgY2xhc3NOYW1lPVwiaGlnaC10ZW1wXCI+XHJcbiAgICAgICAgICAgICAgICAgICAgICDmnIDpq5ggPHNwYW4+e2Ake3RvZGF5Lm1heFRlbXAudG9GaXhlZCgxKX3ihINgfTwvc3Bhbj57XCIgXCJ9XHJcbiAgICAgICAgICAgICAgICAgICAgICA8c21hbGw+PC9zbWFsbD5cclxuICAgICAgICAgICAgICAgICAgICA8L3A+XHJcbiAgICAgICAgICAgICAgICAgICAgPHAgY2xhc3NOYW1lPVwibG93LXRlbXBcIj5cclxuICAgICAgICAgICAgICAgICAgICAgIOacgOS9jiA8c3Bhbj57YCR7dG9kYXkubWluVGVtcC50b0ZpeGVkKDEpfeKEg2B9PC9zcGFuPntcIiBcIn1cclxuICAgICAgICAgICAgICAgICAgICAgIDxzbWFsbD48L3NtYWxsPlxyXG4gICAgICAgICAgICAgICAgICAgIDwvcD5cclxuICAgICAgICAgICAgICAgICAgPC9kaXY+XHJcbiAgICAgICAgICAgICAgICA8L2Rpdj5cclxuICAgICAgICAgICAgICA8L2Rpdj5cclxuXHJcbiAgICAgICAgICAgICAgPHRhYmxlIGNsYXNzTmFtZT1cInByZWNpcGl0YXRpb24tdGFibGVcIj5cclxuICAgICAgICAgICAgICAgIDx0aGVhZD5cclxuICAgICAgICAgICAgICAgICAgPHRyPlxyXG4gICAgICAgICAgICAgICAgICAgIDx0aCBzY29wZT1cImNvbFwiPuaZgumWkzwvdGg+XHJcbiAgICAgICAgICAgICAgICAgICAgPHRoIHNjb3BlPVwiY29sXCI+5Y2I5YmNPC90aD5cclxuICAgICAgICAgICAgICAgICAgICA8dGggc2NvcGU9XCJjb2xcIj7ljYjlvow8L3RoPlxyXG4gICAgICAgICAgICAgICAgICA8L3RyPlxyXG4gICAgICAgICAgICAgICAgPC90aGVhZD5cclxuICAgICAgICAgICAgICAgIDx0Ym9keT5cclxuICAgICAgICAgICAgICAgICAgPHRyPlxyXG4gICAgICAgICAgICAgICAgICAgIDx0ZCBjbGFzc05hbWU9XCJsYWJlbFwiPlxyXG4gICAgICAgICAgICAgICAgICAgICAgPGltZ1xyXG4gICAgICAgICAgICAgICAgICAgICAgICBjbGFzc05hbWU9XCJyYWlueWltZ1wiXHJcbiAgICAgICAgICAgICAgICAgICAgICAgIHNyYz17cmFpbnlJY29ufVxyXG4gICAgICAgICAgICAgICAgICAgICAgICBhbHQ9XCLpmY3msLTnorrnjodcIlxyXG4gICAgICAgICAgICAgICAgICAgICAgLz5cclxuICAgICAgICAgICAgICAgICAgICA8L3RkPlxyXG4gICAgICAgICAgICAgICAgICAgIDx0ZD5cclxuICAgICAgICAgICAgICAgICAgICAgIHt0b2RheS5wb3BBTTEgPT09IFwiLVwiXHJcbiAgICAgICAgICAgICAgICAgICAgICAgID8gXCItXCJcclxuICAgICAgICAgICAgICAgICAgICAgICAgOiAodG9kYXkucG9wQU0xICogMTAwKS50b0ZpeGVkKDApfVxyXG4gICAgICAgICAgICAgICAgICAgICAgJVxyXG4gICAgICAgICAgICAgICAgICAgIDwvdGQ+XHJcbiAgICAgICAgICAgICAgICAgICAgPHRkPnsodG9kYXkucG9wUE0xICogMTAwKS50b0ZpeGVkKDApfSU8L3RkPlxyXG4gICAgICAgICAgICAgICAgICA8L3RyPlxyXG4gICAgICAgICAgICAgICAgPC90Ym9keT5cclxuICAgICAgICAgICAgICA8L3RhYmxlPlxyXG4gICAgICAgICAgICA8L2Rpdj5cclxuXHJcbiAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwid2VhdGhlci1jYXJkXCI+XHJcbiAgICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJ3ZWF0aGVyLXR0LWhlYWRlclwiPlxyXG4gICAgICAgICAgICAgICAgPGgzPuaYjuaXpeOBruWkqeawlyh7dG9tbW9ycm93LmRhdGV9KTwvaDM+XHJcbiAgICAgICAgICAgICAgPC9kaXY+XHJcblxyXG4gICAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwid2VhdGhlci1pY29uLXNlY3Rpb25cIj5cclxuICAgICAgICAgICAgICAgIDxwIGNsYXNzTmFtZT17dG9tbW9ycm93LndlYXRoZXIudG9Mb3dlckNhc2UoKX0+XHJcbiAgICAgICAgICAgICAgICAgIHtjb252ZXJ0SmFwYW5XZXRoKHRvbW1vcnJvdy53ZWF0aGVyKX1cclxuICAgICAgICAgICAgICAgIDwvcD5cclxuICAgICAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwid2VhdGhlci1pY29uXCI+XHJcbiAgICAgICAgICAgICAgICAgIHsvKiDjgZPjga7lpKnmsJfjgqLjgqTjgrPjg7Pjga/lpKfjgY3jgoHjgavjgZfjgZ/jgYQgKi99XHJcbiAgICAgICAgICAgICAgICAgIDxpbWcgc3JjPXt0b21tb3Jyb3cuaWNvbn0gYWx0PVwi5piO5pel44Gu5LqI5aCx44Ki44Kk44Kz44OzXCIgLz5cclxuICAgICAgICAgICAgICAgIDwvZGl2PlxyXG4gICAgICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJ3ZWF0aGVyLWRlc2NyaXB0aW9uXCI+XHJcbiAgICAgICAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwidGVtcGVyYXR1cmVcIj5cclxuICAgICAgICAgICAgICAgICAgICA8cCBjbGFzc05hbWU9XCJoaWdoLXRlbXBcIj5cclxuICAgICAgICAgICAgICAgICAgICAgIOacgOmrmCA8c3Bhbj57YCR7dG9tbW9ycm93Lm1heFRlbXAudG9GaXhlZCgxKX3ihINgfTwvc3Bhbj57XCIgXCJ9XHJcbiAgICAgICAgICAgICAgICAgICAgICA8c21hbGw+PC9zbWFsbD5cclxuICAgICAgICAgICAgICAgICAgICA8L3A+XHJcbiAgICAgICAgICAgICAgICAgICAgPHAgY2xhc3NOYW1lPVwibG93LXRlbXBcIj5cclxuICAgICAgICAgICAgICAgICAgICAgIOacgOS9jiA8c3Bhbj57YCR7dG9tbW9ycm93Lm1pblRlbXAudG9GaXhlZCgxKX3ihINgfTwvc3Bhbj57XCIgXCJ9XHJcbiAgICAgICAgICAgICAgICAgICAgICA8c21hbGw+PC9zbWFsbD5cclxuICAgICAgICAgICAgICAgICAgICA8L3A+XHJcbiAgICAgICAgICAgICAgICAgIDwvZGl2PlxyXG4gICAgICAgICAgICAgICAgPC9kaXY+XHJcbiAgICAgICAgICAgICAgPC9kaXY+XHJcblxyXG4gICAgICAgICAgICAgIDx0YWJsZSBjbGFzc05hbWU9XCJwcmVjaXBpdGF0aW9uLXRhYmxlXCI+XHJcbiAgICAgICAgICAgICAgICA8dGhlYWQ+XHJcbiAgICAgICAgICAgICAgICAgIDx0cj5cclxuICAgICAgICAgICAgICAgICAgICA8dGggc2NvcGU9XCJjb2xcIj7mmYLplpM8L3RoPlxyXG4gICAgICAgICAgICAgICAgICAgIDx0aCBzY29wZT1cImNvbFwiPuWNiOWJjTwvdGg+XHJcbiAgICAgICAgICAgICAgICAgICAgPHRoIHNjb3BlPVwiY29sXCI+5Y2I5b6MPC90aD5cclxuICAgICAgICAgICAgICAgICAgPC90cj5cclxuICAgICAgICAgICAgICAgIDwvdGhlYWQ+XHJcbiAgICAgICAgICAgICAgICA8dGJvZHk+XHJcbiAgICAgICAgICAgICAgICAgIDx0cj5cclxuICAgICAgICAgICAgICAgICAgICA8dGQgY2xhc3NOYW1lPVwibGFiZWxcIj5cclxuICAgICAgICAgICAgICAgICAgICAgIDxpbWdcclxuICAgICAgICAgICAgICAgICAgICAgICAgY2xhc3NOYW1lPVwicmFpbnlpbWdcIlxyXG4gICAgICAgICAgICAgICAgICAgICAgICBzcmM9e3JhaW55SWNvbn1cclxuICAgICAgICAgICAgICAgICAgICAgICAgYWx0PVwi6ZmN5rC056K6546HXCJcclxuICAgICAgICAgICAgICAgICAgICAgIC8+XHJcbiAgICAgICAgICAgICAgICAgICAgPC90ZD5cclxuICAgICAgICAgICAgICAgICAgICA8dGQ+eyh0b21tb3Jyb3cucG9wQU0yICogMTAwKS50b0ZpeGVkKDApfSU8L3RkPlxyXG4gICAgICAgICAgICAgICAgICAgIDx0ZD57KHRvbW1vcnJvdy5wb3BQTTIgKiAxMDApLnRvRml4ZWQoMCl9JTwvdGQ+XHJcbiAgICAgICAgICAgICAgICAgIDwvdHI+XHJcbiAgICAgICAgICAgICAgICA8L3Rib2R5PlxyXG4gICAgICAgICAgICAgIDwvdGFibGU+XHJcbiAgICAgICAgICAgIDwvZGl2PlxyXG4gICAgICAgICAgPC9kaXY+XHJcbiAgICAgICAgPC8+XHJcbiAgICAgICl9XHJcbiAgICAgIHsvKiDjg4fjgqTjg6rjg7zooajnpLrjg6Ljg7zjg4lf44GK5aSp5rCX44Kr44O844OJ6YOo5YiGICovfVxyXG4gICAgICB7dmlld0ZsZyA9PT0gMiAmJiAoXHJcbiAgICAgICAgPD5cclxuICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwid2VhdGhlci10b2RheS1jb250YWluZXJcIj5cclxuICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJ3ZWF0aGVyLXRvZGF5LWNhcmRcIj5cclxuICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cIndlYXRoZXItdG9kYXktaGVhZGVyXCI+XHJcbiAgICAgICAgICAgICAgICA8aDM+5LuK5pel44Gu5aSp5rCXKHt0b2RheS5kYXRlfSk8L2gzPlxyXG4gICAgICAgICAgICAgIDwvZGl2PlxyXG4gICAgICAgICAgICAgIDxwIGNsYXNzTmFtZT17dG9kYXkud2VhdGhlci50b0xvd2VyQ2FzZSgpfT5cclxuICAgICAgICAgICAgICAgIHtjb252ZXJ0SmFwYW5XZXRoKHRvZGF5LndlYXRoZXIpfVxyXG4gICAgICAgICAgICAgIDwvcD5cclxuXHJcbiAgICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJ3ZWF0aGVyLXRvZGF5LWljb24tc2VjdGlvblwiPlxyXG4gICAgICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJ3ZWF0aGVyLXRvZGF5LWljb25cIj5cclxuICAgICAgICAgICAgICAgICAgey8qIOOBk+OBruWkqeawl+OCouOCpOOCs+ODs+OBr+Wkp+OBjeOCgeOBq+OBl+OBn+OBhCAqL31cclxuICAgICAgICAgICAgICAgICAgPGltZyBzcmM9e3RvZGF5Lmljb259IGFsdD1cIuacrOaXpeOBruS6iOWgseOCouOCpOOCs+ODs1wiIC8+XHJcbiAgICAgICAgICAgICAgICA8L2Rpdj5cclxuICAgICAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwid2VhdGhlci10b2RheS1kZXNjcmlwdGlvblwiPlxyXG4gICAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cInRvZGF5LXRlbXBlcmF0dXJlXCI+XHJcbiAgICAgICAgICAgICAgICAgICAgPHAgY2xhc3NOYW1lPVwidG9kYXktaGlnaC10ZW1wXCI+XHJcbiAgICAgICAgICAgICAgICAgICAgICDmnIDpq5ggPHNwYW4+e2Ake3RvZGF5Lm1heFRlbXAudG9GaXhlZCgxKX3ihINgfTwvc3Bhbj57XCIgXCJ9XHJcbiAgICAgICAgICAgICAgICAgICAgICA8c21hbGw+PC9zbWFsbD5cclxuICAgICAgICAgICAgICAgICAgICA8L3A+XHJcbiAgICAgICAgICAgICAgICAgICAgPHAgY2xhc3NOYW1lPVwidG9kYXktbG93LXRlbXBcIj5cclxuICAgICAgICAgICAgICAgICAgICAgIOacgOS9jiA8c3Bhbj57YCR7dG9kYXkubWluVGVtcC50b0ZpeGVkKDEpfeKEg2B9PC9zcGFuPntcIiBcIn1cclxuICAgICAgICAgICAgICAgICAgICAgIDxzbWFsbD48L3NtYWxsPlxyXG4gICAgICAgICAgICAgICAgICAgIDwvcD5cclxuICAgICAgICAgICAgICAgICAgPC9kaXY+XHJcbiAgICAgICAgICAgICAgICA8L2Rpdj5cclxuICAgICAgICAgICAgICA8L2Rpdj5cclxuXHJcbiAgICAgICAgICAgICAgPHRhYmxlIGNsYXNzTmFtZT1cInRvZGF5LXByZWNpcGl0YXRpb24tdGFibGVcIj5cclxuICAgICAgICAgICAgICAgIDx0aGVhZD5cclxuICAgICAgICAgICAgICAgICAgPHRyPlxyXG4gICAgICAgICAgICAgICAgICAgIDx0aCBzY29wZT1cImNvbFwiPuaZgumWkzwvdGg+XHJcbiAgICAgICAgICAgICAgICAgICAgPHRoIHNjb3BlPVwiY29sXCI+MC02PC90aD5cclxuICAgICAgICAgICAgICAgICAgICA8dGggc2NvcGU9XCJjb2xcIj42LTEyPC90aD5cclxuICAgICAgICAgICAgICAgICAgICA8dGggc2NvcGU9XCJjb2xcIj4xMi0xODwvdGg+XHJcbiAgICAgICAgICAgICAgICAgICAgPHRoIHNjb3BlPVwiY29sXCI+MTgtMjQ8L3RoPlxyXG4gICAgICAgICAgICAgICAgICA8L3RyPlxyXG4gICAgICAgICAgICAgICAgPC90aGVhZD5cclxuICAgICAgICAgICAgICAgIDx0Ym9keT5cclxuICAgICAgICAgICAgICAgICAgPHRyPlxyXG4gICAgICAgICAgICAgICAgICAgIDx0ZCBjbGFzc05hbWU9XCJsYWJlbFwiPlxyXG4gICAgICAgICAgICAgICAgICAgICAgPGltZ1xyXG4gICAgICAgICAgICAgICAgICAgICAgICBjbGFzc05hbWU9XCJyYWlueWltZ1wiXHJcbiAgICAgICAgICAgICAgICAgICAgICAgIHNyYz17cmFpbnlJY29ufVxyXG4gICAgICAgICAgICAgICAgICAgICAgICBhbHQ9XCLpmY3msLTnorrnjodcIlxyXG4gICAgICAgICAgICAgICAgICAgICAgLz5cclxuICAgICAgICAgICAgICAgICAgICA8L3RkPlxyXG4gICAgICAgICAgICAgICAgICAgIHsvKiA8dGQ+eyh0b2RheS5wb3BBTTEgKiAxMDApLnRvRml4ZWQoMCl9JTwvdGQ+ICovfVxyXG4gICAgICAgICAgICAgICAgICAgIDx0ZD5cclxuICAgICAgICAgICAgICAgICAgICAgIHt0b2RheXNEYXRhLkFNMXBvcCA9PT0gXCItXCJcclxuICAgICAgICAgICAgICAgICAgICAgICAgPyBcIi1cIlxyXG4gICAgICAgICAgICAgICAgICAgICAgICA6ICh0b2RheXNEYXRhLkFNMXBvcCAqIDEwMCkudG9GaXhlZCgwKX1cclxuICAgICAgICAgICAgICAgICAgICAgICVcclxuICAgICAgICAgICAgICAgICAgICA8L3RkPlxyXG4gICAgICAgICAgICAgICAgICAgIDx0ZD5cclxuICAgICAgICAgICAgICAgICAgICAgIHt0b2RheXNEYXRhLkFNMnBvcCA9PT0gXCItXCJcclxuICAgICAgICAgICAgICAgICAgICAgICAgPyBcIi1cIlxyXG4gICAgICAgICAgICAgICAgICAgICAgICA6ICh0b2RheXNEYXRhLkFNMnBvcCAqIDEwMCkudG9GaXhlZCgwKX1cclxuICAgICAgICAgICAgICAgICAgICAgICVcclxuICAgICAgICAgICAgICAgICAgICA8L3RkPlxyXG4gICAgICAgICAgICAgICAgICAgIDx0ZD5cclxuICAgICAgICAgICAgICAgICAgICAgIHt0b2RheXNEYXRhLlBNMXBvcCA9PT0gXCItXCJcclxuICAgICAgICAgICAgICAgICAgICAgICAgPyBcIi1cIlxyXG4gICAgICAgICAgICAgICAgICAgICAgICA6ICh0b2RheXNEYXRhLlBNMXBvcCAqIDEwMCkudG9GaXhlZCgwKX1cclxuICAgICAgICAgICAgICAgICAgICAgICVcclxuICAgICAgICAgICAgICAgICAgICA8L3RkPlxyXG4gICAgICAgICAgICAgICAgICAgIDx0ZD5cclxuICAgICAgICAgICAgICAgICAgICAgIHt0b2RheXNEYXRhLlBNMnBvcCA9PT0gXCItXCJcclxuICAgICAgICAgICAgICAgICAgICAgICAgPyBcIi1cIlxyXG4gICAgICAgICAgICAgICAgICAgICAgICA6ICh0b2RheXNEYXRhLlBNMnBvcCAqIDEwMCkudG9GaXhlZCgwKX1cclxuICAgICAgICAgICAgICAgICAgICAgICVcclxuICAgICAgICAgICAgICAgICAgICA8L3RkPlxyXG4gICAgICAgICAgICAgICAgICA8L3RyPlxyXG4gICAgICAgICAgICAgICAgICA8dHI+XHJcbiAgICAgICAgICAgICAgICAgICAgPHRkIGNsYXNzTmFtZT1cImxhYmVsXCI+XHJcbiAgICAgICAgICAgICAgICAgICAgICA8aW1nIGNsYXNzTmFtZT1cInV2aUltZ1wiIHNyYz17dXZpSWNvbn0gYWx0PVwi57Sr5aSW57ea5oyH5pWwXCIgLz5cclxuICAgICAgICAgICAgICAgICAgICA8L3RkPlxyXG4gICAgICAgICAgICAgICAgICAgIDx0ZD5cclxuICAgICAgICAgICAgICAgICAgICAgIHt0b2RheXNEYXRhLkFNMXV2aSA9PT0gXCItXCJcclxuICAgICAgICAgICAgICAgICAgICAgICAgPyBcIi1cIlxyXG4gICAgICAgICAgICAgICAgICAgICAgICA6IGdldFVWTGV2ZWwodG9kYXlzRGF0YS5BTTF1dmkudG9GaXhlZCgxKSl9XHJcbiAgICAgICAgICAgICAgICAgICAgPC90ZD5cclxuICAgICAgICAgICAgICAgICAgICA8dGQ+XHJcbiAgICAgICAgICAgICAgICAgICAgICB7dG9kYXlzRGF0YS5BTTJ1dmkgPT09IFwiLVwiXHJcbiAgICAgICAgICAgICAgICAgICAgICAgID8gXCItXCJcclxuICAgICAgICAgICAgICAgICAgICAgICAgOiBnZXRVVkxldmVsKHRvZGF5c0RhdGEuQU0ydXZpLnRvRml4ZWQoMSkpfVxyXG4gICAgICAgICAgICAgICAgICAgIDwvdGQ+XHJcbiAgICAgICAgICAgICAgICAgICAgPHRkPlxyXG4gICAgICAgICAgICAgICAgICAgICAge3RvZGF5c0RhdGEuUE0xdXZpID09PSBcIi1cIlxyXG4gICAgICAgICAgICAgICAgICAgICAgICA/IFwiLVwiXHJcbiAgICAgICAgICAgICAgICAgICAgICAgIDogZ2V0VVZMZXZlbCh0b2RheXNEYXRhLlBNMXV2aS50b0ZpeGVkKDEpKX1cclxuICAgICAgICAgICAgICAgICAgICA8L3RkPlxyXG4gICAgICAgICAgICAgICAgICAgIDx0ZD5cclxuICAgICAgICAgICAgICAgICAgICAgIHt0b2RheXNEYXRhLlBNMXV2aSA9PT0gXCItXCJcclxuICAgICAgICAgICAgICAgICAgICAgICAgPyBcIi1cIlxyXG4gICAgICAgICAgICAgICAgICAgICAgICA6IGdldFVWTGV2ZWwodG9kYXlzRGF0YS5QTTF1dmkudG9GaXhlZCgxKSl9XHJcbiAgICAgICAgICAgICAgICAgICAgPC90ZD5cclxuICAgICAgICAgICAgICAgICAgPC90cj5cclxuICAgICAgICAgICAgICAgIDwvdGJvZHk+XHJcbiAgICAgICAgICAgICAgPC90YWJsZT5cclxuICAgICAgICAgICAgPC9kaXY+XHJcbiAgICAgICAgICA8L2Rpdj5cclxuICAgICAgICA8Lz5cclxuICAgICAgKX1cclxuICAgICAgey8qIOODh+OCpOODquODvOihqOekuuODouODvOODiV/mmYLplpPjgZTjgajooajnpLrpg6jliIYgKi99XHJcbiAgICAgIHt2aWV3RmxnID09PSAyICYmIChcclxuICAgICAgICA8PlxyXG4gICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJkYWlseV90YWJsZVwiPlxyXG4gICAgICAgICAgICA8dWw+XHJcbiAgICAgICAgICAgICAgPGxpIGNsYXNzTmFtZT1cInR0LWRhdGVcIj5cclxuICAgICAgICAgICAgICAgIDxwPuaXpTwvcD5cclxuICAgICAgICAgICAgICA8L2xpPlxyXG4gICAgICAgICAgICAgIDxsaSBjbGFzc05hbWU9XCJ0aW1lXCI+XHJcbiAgICAgICAgICAgICAgICA8cD7mmYI8L3A+XHJcbiAgICAgICAgICAgICAgPC9saT5cclxuICAgICAgICAgICAgICA8bGkgY2xhc3NOYW1lPVwid2VhdGhlclwiPlxyXG4gICAgICAgICAgICAgICAgPHA+5aSp5rCXPC9wPlxyXG4gICAgICAgICAgICAgIDwvbGk+XHJcbiAgICAgICAgICAgICAgPGxpIGNsYXNzTmFtZT1cInBvcFwiPlxyXG4gICAgICAgICAgICAgICAgPHA+6ZmN5rC0PC9wPlxyXG4gICAgICAgICAgICAgIDwvbGk+XHJcbiAgICAgICAgICAgICAgPGxpIGNsYXNzTmFtZT1cInRlbXBcIj5cclxuICAgICAgICAgICAgICAgIDxwPuawl+a4qTwvcD5cclxuICAgICAgICAgICAgICA8L2xpPlxyXG4gICAgICAgICAgICAgIDxsaSBjbGFzc05hbWU9XCJ3aW5kXCI+XHJcbiAgICAgICAgICAgICAgICA8cD7poqg8L3A+XHJcbiAgICAgICAgICAgICAgPC9saT5cclxuICAgICAgICAgICAgPC91bD5cclxuICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJob3VybHlfaW5mb3NcIj5cclxuICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImhvdXJseV9jb250ZW50XCI+XHJcbiAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImRheV9oZWFkZXJcIj5cclxuICAgICAgICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJ0b2RheV9kYXRlXCI+XHJcbiAgICAgICAgICAgICAgICAgICAgPHNwYW4+e2Ake1xyXG4gICAgICAgICAgICAgICAgICAgICAgbmV3IERhdGUoaG91cmx5RGF0YVswXS5kdCAqIDEwMDApLmdldE1vbnRoKCkgKyAxXHJcbiAgICAgICAgICAgICAgICAgICAgfS8ke25ldyBEYXRlKGhvdXJseURhdGFbMF0uZHQgKiAxMDAwKS5nZXREYXRlKCl9KCR7XHJcbiAgICAgICAgICAgICAgICAgICAgICBkYXlzW25ldyBEYXRlKGhvdXJseURhdGFbMF0uZHQgKiAxMDAwKS5nZXREYXkoKV1cclxuICAgICAgICAgICAgICAgICAgICB9KWB9PC9zcGFuPlxyXG4gICAgICAgICAgICAgICAgICA8L2Rpdj5cclxuICAgICAgICAgICAgICAgIDwvZGl2PlxyXG4gICAgICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJldmVyeV9kYXlcIj5cclxuICAgICAgICAgICAgICAgICAge3RvZGF5RGF0YS5tYXAoKGhvdXIpID0+IChcclxuICAgICAgICAgICAgICAgICAgICA8dWwga2V5PXtob3VyLmR0fT5cclxuICAgICAgICAgICAgICAgICAgICAgIDxsaSBjbGFzc05hbWU9XCJ0aW1lXCI+XHJcbiAgICAgICAgICAgICAgICAgICAgICAgIHtuZXcgRGF0ZShob3VyLmR0ICogMTAwMCkuZ2V0SG91cnMoKX1cclxuICAgICAgICAgICAgICAgICAgICAgIDwvbGk+XHJcbiAgICAgICAgICAgICAgICAgICAgICA8bGkgY2xhc3NOYW1lPVwid2VhdGhlclwiPlxyXG4gICAgICAgICAgICAgICAgICAgICAgICA8aW1nXHJcbiAgICAgICAgICAgICAgICAgICAgICAgICAgc3JjPXtgaHR0cHM6Ly9vcGVud2VhdGhlcm1hcC5vcmcvaW1nL3duLyR7aG91ci53ZWF0aGVyWzBdLmljb259QDJ4LnBuZ2B9XHJcbiAgICAgICAgICAgICAgICAgICAgICAgICAgYWx0PVwi5LuK5pel44Gu44GK5aSp5rCX44Ki44Kk44Kz44OzXCJcclxuICAgICAgICAgICAgICAgICAgICAgICAgLz5cclxuICAgICAgICAgICAgICAgICAgICAgICAgey8qIHtob3VyLndlYXRoZXJbMF0ubWFpbn08L2xpPiAqL31cclxuICAgICAgICAgICAgICAgICAgICAgIDwvbGk+XHJcbiAgICAgICAgICAgICAgICAgICAgICA8bGkgY2xhc3NOYW1lPVwicG9wXCI+eyhob3VyLnBvcCAqIDEwMCkudG9GaXhlZCgwKX0lPC9saT5cclxuICAgICAgICAgICAgICAgICAgICAgIDxsaSBjbGFzc05hbWU9XCJ0ZW1wXCI+XHJcbiAgICAgICAgICAgICAgICAgICAgICAgIHsoaG91ci50ZW1wIC0gMjczLjE1KS50b0ZpeGVkKDApfeKEg1xyXG4gICAgICAgICAgICAgICAgICAgICAgPC9saT5cclxuICAgICAgICAgICAgICAgICAgICAgIDxsaSBjbGFzc05hbWU9XCJ3aW5kXCI+e2hvdXIud2luZF9zcGVlZC50b0ZpeGVkKDEpfW0vczwvbGk+XHJcbiAgICAgICAgICAgICAgICAgICAgPC91bD5cclxuICAgICAgICAgICAgICAgICAgKSl9XHJcbiAgICAgICAgICAgICAgICA8L2Rpdj5cclxuICAgICAgICAgICAgICA8L2Rpdj5cclxuICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImhvdXJseV9jb250ZW50XCI+XHJcbiAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImRheV9oZWFkZXJcIj5cclxuICAgICAgICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJ0b2RheV9kYXRlXCI+XHJcbiAgICAgICAgICAgICAgICAgICAgPHNwYW4+XHJcbiAgICAgICAgICAgICAgICAgICAgICB7YCR7bmV3IERhdGUoaG91cmx5RGF0YVswXS5kdCAqIDEwMDApLmdldE1vbnRoKCkgKyAxfS8ke1xyXG4gICAgICAgICAgICAgICAgICAgICAgICBuZXcgRGF0ZShob3VybHlEYXRhWzBdLmR0ICogMTAwMCkuZ2V0RGF0ZSgpICsgMVxyXG4gICAgICAgICAgICAgICAgICAgICAgfSgke1xyXG4gICAgICAgICAgICAgICAgICAgICAgICBkYXlzW25ldyBEYXRlKGhvdXJseURhdGFbMF0uZHQgKiAxMDAwKS5nZXREYXkoKSArIDFdXHJcbiAgICAgICAgICAgICAgICAgICAgICB9KWB9XHJcbiAgICAgICAgICAgICAgICAgICAgPC9zcGFuPlxyXG4gICAgICAgICAgICAgICAgICA8L2Rpdj5cclxuICAgICAgICAgICAgICAgIDwvZGl2PlxyXG4gICAgICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJldmVyeV9kYXlcIj5cclxuICAgICAgICAgICAgICAgICAge3RvbW1vcnJvd0RhdGEubWFwKChob3VyKSA9PiAoXHJcbiAgICAgICAgICAgICAgICAgICAgPHVsIGtleT17aG91ci5kdH0+XHJcbiAgICAgICAgICAgICAgICAgICAgICA8bGkgY2xhc3NOYW1lPVwidGltZVwiPlxyXG4gICAgICAgICAgICAgICAgICAgICAgICB7bmV3IERhdGUoaG91ci5kdCAqIDEwMDApLmdldEhvdXJzKCl9XHJcbiAgICAgICAgICAgICAgICAgICAgICA8L2xpPlxyXG4gICAgICAgICAgICAgICAgICAgICAgPGxpIGNsYXNzTmFtZT1cIndlYXRoZXJcIj5cclxuICAgICAgICAgICAgICAgICAgICAgICAgPGltZ1xyXG4gICAgICAgICAgICAgICAgICAgICAgICAgIHNyYz17YGh0dHBzOi8vb3BlbndlYXRoZXJtYXAub3JnL2ltZy93bi8ke2hvdXIud2VhdGhlclswXS5pY29ufUAyeC5wbmdgfVxyXG4gICAgICAgICAgICAgICAgICAgICAgICAgIGFsdD1cIuS7iuaXpeOBruOBiuWkqeawl+OCouOCpOOCs+ODs1wiXHJcbiAgICAgICAgICAgICAgICAgICAgICAgIC8+XHJcbiAgICAgICAgICAgICAgICAgICAgICAgIHsvKiB7aG91ci53ZWF0aGVyWzBdLm1haW59ICovfVxyXG4gICAgICAgICAgICAgICAgICAgICAgPC9saT5cclxuICAgICAgICAgICAgICAgICAgICAgIDxsaSBjbGFzc05hbWU9XCJwb3BcIj57KGhvdXIucG9wICogMTAwKS50b0ZpeGVkKDApfSU8L2xpPlxyXG4gICAgICAgICAgICAgICAgICAgICAgPGxpIGNsYXNzTmFtZT1cInRlbXBcIj5cclxuICAgICAgICAgICAgICAgICAgICAgICAgeyhob3VyLnRlbXAgLSAyNzMuMTUpLnRvRml4ZWQoMCl94oSDXHJcbiAgICAgICAgICAgICAgICAgICAgICA8L2xpPlxyXG4gICAgICAgICAgICAgICAgICAgICAgPGxpIGNsYXNzTmFtZT1cIndpbmRcIj57aG91ci53aW5kX3NwZWVkLnRvRml4ZWQoMSl9bS9zPC9saT5cclxuICAgICAgICAgICAgICAgICAgICA8L3VsPlxyXG4gICAgICAgICAgICAgICAgICApKX1cclxuICAgICAgICAgICAgICAgIDwvZGl2PlxyXG4gICAgICAgICAgICAgIDwvZGl2PlxyXG4gICAgICAgICAgICA8L2Rpdj5cclxuICAgICAgICAgIDwvZGl2PlxyXG4gICAgICAgIDwvPlxyXG4gICAgICApfVxyXG4gICAgPC8+XHJcbiAgKTtcclxufVxyXG4iXSwiZmlsZSI6IkM6L1VzZXJzL3NodW5wL09uZURyaXZlL+ODh+OCueOCr+ODiOODg+ODly9GcmFtZVdvcmtzL3JlYWN0X25leHRqc19wcmFjL2R5bmFtaWMtY29tcG9uZW50LXR5cGVzL3NyYy9jb21wb25lbnRzL1RvZGF5VG9tbW9ycm93LmpzeCJ9

@@ -49,8 +49,8 @@ export default function WeatherChart({ data, icons, viewFlg }) {
       },
       y: {
         stacked: false,
-        max: 25,
-        min: 10,
+        max: 28,
+        min: 13,
         ticks: {
           stepSize: 3,
         },
@@ -66,7 +66,7 @@ export default function WeatherChart({ data, icons, viewFlg }) {
       },
     },
   };
-  return viewFlg ? (
+  return viewFlg === 1 ? (
     <div className="weather">
       <Line height={150} width={300} options={options} data={data} />
       <div className="wicons">

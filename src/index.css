@@ -11,7 +11,7 @@ body {
   font-family: "Quicksand", sans-serif;
   line-height: 1.5;
   color: var(--text-primary);
-  background: #f9f9f9;
+  background: #e6fffa;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -69,11 +69,12 @@ main h2 {
 }
 
 #examples {
-  margin: 3rem auto;
+  margin: 1.6rem auto;
 }
 
 #examples h2 {
   text-align: left;
+  color: #037e78;
 }
 
 #examples menu {
@@ -89,7 +90,7 @@ main h2 {
   border: none;
   border-radius: 6px;
   background-color: transparent;
-  color: #a18aba;
+  color: #0d9488;
   font-family: "Roboto Condensed", sans-serif;
   font-size: 1rem;
   cursor: pointer;
@@ -97,25 +98,26 @@ main h2 {
 }
 
 #examples menu button:hover {
-  background-color: #1b082f;
+  background-color: #38b2ac;
   color: #ebe7ef;
 }
 
 #examples menu button.active {
-  background-color: #7925d3;
+  background-color: #037e78;
   color: #ebe7ef;
 }
 
 #tab-content {
   padding: 1rem;
   border-radius: 6px;
-  background-color: #1a4b8c;
+  background-color: #ffffff;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
 #tab-content h3 {
   margin: 0;
   display: inline;
+  color: #285e61;
   padding-left: 10px;
 }
 
@@ -126,7 +128,7 @@ div#tab-content + div ul {
   display: flex;
   flex-wrap: wrap;
   gap: 25px;
-  color: #a18aba;
+  color: #285e61;
 }
 div#tab-content + div ul li {
   list-style: none;
