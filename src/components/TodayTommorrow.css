@@ -121,6 +121,12 @@
   height: auto;
   object-fit: cover;
 }
+@media screen and (min-width: 600px) {
+  .precipitation-table tbody .label img {
+    width: 40%;
+    max-width: 80px;
+  }
+}
 .precipitation-table tbody tr td:last-child {
   border-radius: 0 0 8px 0;
 }

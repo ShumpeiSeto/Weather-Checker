@@ -107,14 +107,17 @@
 .clouds {
   font-size: 1.3rem;
   color: lightslategray;
+  margin: 0;
 }
 .rain {
   font-size: 1.3rem;
   color: rgb(84, 84, 206);
+  margin: 0;
 }
 .clear {
   font-size: 1.3rem;
   color: rgb(226, 87, 87);
+  margin: 0;
 }
 .popstr {
   color: blue;
