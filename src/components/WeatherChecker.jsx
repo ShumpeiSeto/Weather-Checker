@@ -78,9 +78,9 @@ export default function WeatherChecker() {
   const [error, setError] = useState(null);
   const [weatherData, setWeatherData] = useState(null);
   const [current, setCurrent] = useState(null);
-  const [viewFlg, setViewFlg] = useState(0);
+  const [viewFlg, setViewFlg] = useState(1);
   const [location, setLocation] = useState(null);
-  const [viewMode, setViewMode] = useState(0);
+  const [viewMode, setViewMode] = useState("weekmode");
 
   function weekClick(selectedButton) {
     setViewMode(selectedButton);
@@ -154,13 +154,6 @@ export default function WeatherChecker() {
     else if (dateFromDt <= dateLine4) return "PM2";
     else return undefined;
   }
-  // Loading中の表示
-  // if (isLoading) {
-  //   return <div>Loading...</div>;
-  // }
-  // if (error) {
-  //   return <div>{`データ取得エラー：${error.message}`}</div>;
-  // }
 
   // お天気情報取得
   const fetchWeatherData = async (location) => {
@@ -194,17 +187,18 @@ export default function WeatherChecker() {
         });
       },
       (err) => {
-        setError("位置情報使えないです", err);
+        setError("位置情報取得エラー");
         setIsLoading(false);
       },
       options
     );
   }, []);
   // 取得したデータを表示するためのuseEffect
+  console.log(location);
   useEffect(() => {
     // debugger;
     if (location) {
-      setIsLoading(false);
+      // setIsLoading(false);
       setError(null);
       fetchWeatherData(location)
         .then((data) => {
@@ -386,8 +380,15 @@ export default function WeatherChecker() {
       },
     ],
   };
+  // Loading中の表示;
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+  if (error) {
+    console.log("エラー発生：", error);
+    return <div>{`データ取得エラー：${error}`}</div>;
+  }
   return (
-    location &&
     weekData && (
       <>
         <WeatherHeader

@@ -19,14 +19,22 @@ export default function TodayTommorrow({
   console.log(todayData);
   function checkPopAlert(todayData) {
     const targetObj = todayData.find(({ pop }) => pop >= 0.5);
-    if (targetObj) {
-      const targetHour = new Date(targetObj?.dt * 1000).getHours();
-    }
     if (!targetObj) return undefined;
-    return targetHour;
+    const targetHour = new Date(targetObj?.dt * 1000).getHours();
+    return { targetHour, targetObj };
   }
   // todayDataを捜査してアラートをチェックする
-  if (checkPopAlert(todayData)) setAlertFlg(1);
+  // const alertData = checkPopAlert(todayData);
+  // if (alertData) setAlertFlg(1);
+  useEffect(() => {
+    const alertData = checkPopAlert(todayData);
+    if (alertData) {
+      setAlertFlg(1);
+    } else {
+      setAlertFlg(0);
+    }
+  }, [hourlyData]);
+
   console.log(ttData);
   const today = ttData.today;
   console.log(today);
