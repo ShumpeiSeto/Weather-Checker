@@ -1,5 +1,29 @@
-node_modules
+# VS Code
+.vscode/
+*.code-workspace
+
+# Chrome profiles and cache
+.chrome-profile*
+*chrome-profile*
+*BrowserMetrics*
+*CrashpadMetrics*
+*BrowsingTopicsState*
+*Cache_Data*
+
+# Node modules (既にあるかもしれないが念のため)
+node_modules/
+
+# Build outputs
+dist/
+build/
+
+# Environment files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# OS generated files
 .DS_Store
-dist
-dist-ssr
-*.local
+Thumbs.db

@@ -1,6 +1,6 @@
 import rainyIcon from "../assets/rainy.png";
 import uviIcon from "../assets/uvi.png";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./TodayTommorrow.css";
 export default function TodayTommorrow({
   ttData,
@@ -9,8 +9,12 @@ export default function TodayTommorrow({
   hourlyData,
   convertJapanWeth,
 }) {
+  if (!hourlyData || hourlyData.length == 0) {
+    return <div>データ読込中...</div>;
+  }
   // 1で降水アラート, 2でUVアラートとする
   const [alertFlg, setAlertFlg] = useState(0);
+  const [alertData, setAlertData] = useState(null);
   const [alertPopHour, setAlertPopHour] = useState(0);
   // 本日時系列データと明日時系列データ用（スライド式）
   const todayData = hourlyData.slice(0, 24 - new Date().getHours());
@@ -27,6 +31,7 @@ export default function TodayTommorrow({
   // const alertData = checkPopAlert(todayData);
   // if (alertData) setAlertFlg(1);
   useEffect(() => {
+    if (!hourlyData || hourlyData.length === 0) return;
     const alertData = checkPopAlert(todayData);
     if (alertData) {
       setAlertFlg(1);
@@ -344,9 +349,11 @@ export default function TodayTommorrow({
               </table>
               <div className="alert">
                 <div className="alertPop">
-                  {alertFlg === 1 && (
-                    <p>{`降水確率が高いです。${targetHour}時の予想降水確率は${(
-                      targetObj?.pop * 100
+                  {alertFlg === 1 && alertData && (
+                    <p>{`降水確率が高いです。${
+                      alertData.targetHour
+                    }時の予想降水確率は${(
+                      alertData.targetObj?.pop * 100
                     ).toFixed(0)}%です。`}</p>
                   )}
                 </div>
