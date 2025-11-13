@@ -160,7 +160,7 @@ export default function WeatherChecker() {
     if (!location) {
       throw new Error("Location is not defined");
     }
-    const API_KEY = process.env.REACT_APP_WEATHER_API_KEY;
+    const API_KEY = import.meta.env.VITE_WEATHER_API_KEY;
     const url = `https://api.openweathermap.org/data/3.0/onecall?lat=${location.lat}&lon=${location.lon}&exclude=minutely,alerts&appid=${API_KEY}&lang=ja`;
     const response = await fetch(url);
 
