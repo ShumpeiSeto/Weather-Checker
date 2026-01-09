@@ -1,76 +1,46 @@
 import { useState, useEffect } from "react";
+import { useGeolocation } from "./useGeolocation"; // 自作フックをインポート
 
 export function useWeather() {
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState(null);
   const [weatherData, setWeatherData] = useState(null);
-  const [location, setLocation] = useState(null);
-  // お天気情報取得
-  const fetchWeatherData = async (location) => {
-    if (!location) {
-      throw new Error("Location is not defined");
-    }
-    const API_KEY = import.meta.env.VITE_WEATHER_API_KEY;
-    const url = `https://api.openweathermap.org/data/3.0/onecall?lat=${location.lat}&lon=${location.lon}&exclude=minutely,alerts&appid=${API_KEY}&lang=ja`;
-    const response = await fetch(url);
+  const [isLoading, setIsLoading] = useState(true);
+  const [apiError, setApiError] = useState(null);
 
-    if (!response.ok) {
-      const error = await response.text();
-      throw new Error(
-        `HTTP error! status: ${response.status}, message: ${error}`
-      );
-    }
-    return await response.json();
-  };
+  // 1. 位置情報を取得するフックを呼び出す
+  const { location, geoError } = useGeolocation();
 
-  // 現在地取得
-  console.log("現在地情報を取得します");
   useEffect(() => {
-    const options = {
-      enableHighAccuracy: true,
-      maximumAge: 30000,
-      timeout: 27000,
-    };
-    navigator.geolocation.getCurrentPosition(
-      (position) => {
-        setLocation({
-          lat: position.coords.latitude,
-          lon: position.coords.longitude,
-        });
-      },
-      (err) => {
-        setError("位置情報取得エラー");
-        setIsLoading(false);
-      },
-      options
-    );
-  }, []);
-
-  // 天気データを取得
-  //  console.log(location);
-  useEffect(() => {
-    // debugger;
+    // 位置情報が確定したら、お天気APIを叩く
     if (location) {
-      // setIsLoading(false);
-      setError(null);
-      fetchWeatherData(location)
-        .then((data) => {
-          console.log("Weather data fetched:", data);
-          setWeatherData(data);
-        })
-        .catch((err) => {
-          console.error("Error fetching weather data:", err);
-          setError(err.message);
-        })
-        .finally(() => {
-          console.log("Loading state set to false");
-          setIsLoading(false);
-        });
-    }
-  }, [location]);
-  // ここは[location]としたいが、エラー多いため抜いておく
+      const fetchWeather = async () => {
+        try {
+          setApiError(null);
+          const API_KEY = import.meta.env.VITE_WEATHER_API_KEY;
+          const url = `https://api.openweathermap.org/data/3.0/onecall?lat=${location.lat}&lon=${location.lon}&exclude=minutely,alerts&appid=${API_KEY}&lang=ja`;
 
-  // 取得データ確認 current, hourly, dailyプロパティがある
-  console.log(weatherData);
+          const response = await fetch(url);
+          if (!response.ok) throw new Error("天気データの取得に失敗しました。");
+
+          const data = await response.json();
+          setWeatherData(data);
+        } catch (err) {
+          setApiError(err.message);
+        } finally {
+          setIsLoading(false);
+        }
+      };
+
+      fetchWeather();
+    }
+
+    // もし位置情報の時点でエラーが出ていたら、ロード状態を解除する
+    if (geoError) {
+      setIsLoading(false);
+    }
+  }, [location, geoError]);
+
+  // UI側に返すエラーメッセージ（位置エラーかAPIエラー、どちらかあれば返す）
+  const error = geoError || apiError;
+
   return { weatherData, isLoading, error };
 }

@@ -20,7 +20,6 @@ export default function TodayTommorrow({
   const todayData = hourlyData.slice(0, 24 - new Date().getHours());
   const tommorrowData = hourlyData.slice(24 - new Date().getHours(), 24);
 
-  console.log(todayData);
   function checkPopAlert(todayData) {
     const targetObj = todayData.find(({ pop }) => pop >= 0.5);
     if (!targetObj) return undefined;
@@ -40,9 +39,7 @@ export default function TodayTommorrow({
     }
   }, [hourlyData]);
 
-  console.log(ttData);
   const today = ttData.today;
-  console.log(today);
   const tommorrow = ttData.tommorrow;
   const days = ["日", "月", "火", "水", "木", "金", "土"];
   function getUVLevel(uvi) {

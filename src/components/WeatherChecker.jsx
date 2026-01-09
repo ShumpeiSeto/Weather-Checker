@@ -13,8 +13,10 @@ import WeatherHeader from "./WeatherHeader";
 import TodayTommorrow from "./TodayTommorrow";
 
 export default function WeatherChecker() {
+  // 位置情報取得とAPI実行
   const { weatherData, isLoading, error } = useWeather();
-  const [current, setCurrent] = useState(null);
+
+  // const [current, setCurrent] = useState(null);
   const [viewFlg, setViewFlg] = useState(1);
   const [viewMode, setViewMode] = useState("weekmode");
 
@@ -30,7 +32,6 @@ export default function WeatherChecker() {
   // 週間データの取得
   const weekData = weatherData?.daily;
   const hourlyData = weatherData?.hourly;
-  console.log(hourlyData);
 
   // 週間データ用の今日明日お天気カード用オブジェクト作成
   const popForData = hourlyData?.reduce(
@@ -83,7 +84,6 @@ export default function WeatherChecker() {
       PM2uvi: [],
     }
   );
-  console.log(todayData);
   // 週間データ用今日明日降水確率表示のためのオブジェクト作成
   const popAve = popForData
     ? {
@@ -111,10 +111,8 @@ export default function WeatherChecker() {
       }
     : undefined;
 
-  console.log(todaysData);
   const { weekData: allWeekData, chartData } = getWeekData(weekData);
   const ttData = { today: allWeekData[0], tommorrow: allWeekData[1] };
-  console.log(ttData);
 
   if (ttData.today) {
     ttData.today["popAM1"] = popAve?.AM1;
@@ -133,11 +131,7 @@ export default function WeatherChecker() {
     if (!Number.isFinite(todaysData?.pop.PM1pop)) todaysData.pop.PM1pop = "-";
     if (!Number.isFinite(todaysData?.uvi.PM1uvi)) todaysData.uvi.PM1uvi = "-";
   }
-  console.log(todaysData);
-  console.log(ttData);
   const { weekData: otherWeekData, _ } = getWeekData(weekData?.slice(2));
-  console.log(allWeekData);
-  console.log(otherWeekData);
 
   const data = {
     labels: chartData.dateLabels,

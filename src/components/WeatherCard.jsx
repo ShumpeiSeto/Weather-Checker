@@ -6,7 +6,6 @@ export default function WeatherCard({ day, index, convertJapanWeth }) {
         <dt className="date">
           {/* {index === 0 ? "今日" : index === 1 ? "明日" : day.date + "曜日"} */}
           {day.date + "曜日"}
-          {console.log(index)}
         </dt>
         <dd className="weather">
           <span className={day.weather.toLowerCase()}>
