@@ -183,17 +183,23 @@ npm run preview
 
 ```
 src/
-├── components/
-│   ├── Header/          # ヘッダーコンポーネント
-│   ├── Examples.jsx     # 天気知識コンテンツ
-│   ├── WeatherChecker.jsx  # メインの天気取得ロジック
-│   ├── WeatherCards.jsx    # 週間天気カード表示
-│   ├── WeatherChart.jsx    # 天気グラフ表示
-│   ├── TodayTommorrow.jsx  # 今日・明日の詳細表示
-│   └── WeatherHeader.jsx   # 天気セクションヘッダー
-├── data.jsx             # 静的データ・コンテンツ
-├── App.jsx              # メインアプリ
-└── index.jsx            # エントリーポイント
+├── assets/              # アイコン・画像等の静的アセット
+├── components/          # UIコンポーネント（表示担当）
+│   ├── Header/          # 共通ヘッダーコンポーネント
+│   ├── WeatherChecker.jsx # メインの天気表示コンテナ
+│   ├── WeatherCards.jsx # 週間天気の一覧表示
+│   ├── WeatherChart.jsx # 気温・湿度推移グラフ
+│   ├── TodayTommorrow.jsx # 今日・明日の詳細表示
+│   └── (各コンポーネント用CSSファイル)
+├── hooks/               # カスタムフック（ロジックの分離）
+│   ├── useWeather.js    # 天気データの取得・管理ロジック
+│   └── useGeolocation.js # 位置情報の取得・管理ロジック
+├── utils/               # ユーティリティ関数
+│   └── weatherUtils.js  # 天気データの整形・計算用共通関数
+├── data.jsx             # 天気知識やアドバイス用テキストデータ
+├── App.jsx              # アプリケーション全体のレイアウト
+├── index.jsx            # エントリーポイント
+└── index.css            # グローバルスタイル
 ```
 
 ## トラブルシューティング
