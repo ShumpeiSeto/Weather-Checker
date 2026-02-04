@@ -91,7 +91,10 @@
   color: #555;
   /* text-align: center; テキストを中央揃え */
 }
-
+.weather-card .temperature {
+  display: flex;
+  justify-content: center;
+}
 .maxtemp {
   color: red;
   padding-right: 8px;
@@ -112,6 +115,11 @@
 .rain {
   font-size: 1.3rem;
   color: rgb(84, 84, 206);
+  margin: 0;
+}
+.snow {
+  font-size: 1.3rem;
+  color: lightblue;
   margin: 0;
 }
 .clear {
