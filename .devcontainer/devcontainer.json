@@ -1,0 +1,25 @@
+{
+  "name": "Weather Checker Dev Env",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "customizations": {
+    "vscode": {
+      // チームで統一したい拡張機能を指定
+      "extensions": [
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "dsznajder.es7-react-js-snippets"
+      ],
+      "settings": {
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+      }
+    }
+  },
+  "remoteUser": "node",
+  // Viteのデフォルトポート 5173 をローカルに繋ぐ
+  "forwardPorts": [5173],
+  // コンテナ作成後に自動でライブラリをインストールさせる
+  "postCreateCommand": "npm install"
+}
