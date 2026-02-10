@@ -159,10 +159,12 @@ export default function TodayTommorrow({
                 <div className="weather-description">
                   <div className="temperature">
                     <p className="high-temp">
-                      最高 <span>{`${tommorrow.maxTemp.toFixed(1)}℃`}</span>{" "}
+                      最高{" "}
+                      <span>{`${tommorrow.maxTemp.toFixed(1)}℃`}</span>{" "}
                     </p>
                     <p className="low-temp">
-                      最低 <span>{`${tommorrow.minTemp.toFixed(1)}℃`}</span>{" "}
+                      最低{" "}
+                      <span>{`${tommorrow.minTemp.toFixed(1)}℃`}</span>{" "}
                     </p>
                   </div>
                 </div>
@@ -354,22 +356,21 @@ export default function TodayTommorrow({
                     ).toFixed(0)}%です。`}</p>
                   )}
                 </div>
-                {console.log(todaysData)}
                 <div
                   className="alertUvi"
                   style={{
                     color: getUVLevel(
                       Math.max(
                         todaysData.uvi.PM1uvi,
-                        todaysData.uvi.AM2uvi
-                      ).toFixed(0)
+                        todaysData.uvi.AM2uvi,
+                      ).toFixed(0),
                     ).color,
                     border: `1px solid ${
                       getUVLevel(
                         Math.max(
                           todaysData.uvi.PM1uvi,
-                          todaysData.uvi.AM2uvi
-                        ).toFixed(0)
+                          todaysData.uvi.AM2uvi,
+                        ).toFixed(0),
                       ).color
                     }`,
                   }}
@@ -379,16 +380,16 @@ export default function TodayTommorrow({
                     getUVLevel(
                       Math.max(
                         todaysData.uvi.PM1uvi,
-                        todaysData.uvi.AM2uvi
-                      ).toFixed(1)
+                        todaysData.uvi.AM2uvi,
+                      ).toFixed(1),
                     ).level
                   }
                   ${
                     getUVLevel(
                       Math.max(
                         todaysData.uvi.PM1uvi,
-                        todaysData.uvi.AM2uvi
-                      ).toFixed(1)
+                        todaysData.uvi.AM2uvi,
+                      ).toFixed(1),
                     ).advice
                   }
                   `}

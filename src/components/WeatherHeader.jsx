@@ -27,14 +27,6 @@ export default function WeatherHeader({
             >
               デイリーモード
             </TabButton>
-            {/* <TabButton
-              key="0"
-              isSelected={viewMode === "resetMode"}
-              onClick={() => resetClick("resetMode")}
-            >
-              reset
-            </TabButton> */}
-            {/* {console.log(viewMode)} */}
           </>
         }
       ></Tabs>

@@ -3,16 +3,13 @@ import { useState } from "react";
 import TabButton from "./TabButton.jsx";
 import Section from "./Section.jsx";
 import Tabs from "./Tabs.jsx";
-import { EXAMPLES } from "../data.jsx";
 import { WEATHER_KNOWLEDGE } from "../data.jsx";
 
 export default function Examples() {
   const [selectedTopic, setSelectedTopic] = useState();
 
   function handleSelect(selectedButton) {
-    // selectedButton => 'components', 'jsx', 'props', 'state'
     setSelectedTopic(selectedButton);
-    // console.log(selectedTopic);
   }
 
   let tabContent = <p>Please select a topic.</p>;

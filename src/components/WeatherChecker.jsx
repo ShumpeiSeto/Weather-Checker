@@ -53,7 +53,7 @@ export default function WeatherChecker() {
       PM1: [],
       AM2: [],
       PM2: [],
-    }
+    },
   );
   const todayData = hourlyData?.reduce(
     (acc, { dt, pop, uvi }) => {
@@ -82,7 +82,7 @@ export default function WeatherChecker() {
       PM1uvi: [],
       PM2pop: [],
       PM2uvi: [],
-    }
+    },
   );
   // 週間データ用今日明日降水確率表示のためのオブジェクト作成
   const popAve = popForData
@@ -210,7 +210,6 @@ export default function WeatherChecker() {
           convertJapanWeth={convertJapanWeth}
         />
         <WeatherChart data={data} icons={chartData.icons} viewFlg={viewFlg} />
-        {console.log(data)}
       </>
     )
   );
